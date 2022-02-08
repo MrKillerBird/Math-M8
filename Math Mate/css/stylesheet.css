@@ -5,11 +5,14 @@
     margin: 0;
 }
 
-html {
-	
+.berekening {
+    margin: 30px;
 }
 
-body {
-	
+.berekening h1 {
+    margin: 5px 0;
 }
 
+.berekening input,button,span {
+    margin: 1px 0;
+}
