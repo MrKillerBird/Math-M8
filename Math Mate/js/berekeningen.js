@@ -1,6 +1,6 @@
 function fibonacci(){
-    let input = document.getElementById("fib-input").value;
-    let output = document.getElementById("fib-output")
+    let input = document.getElementById("fibonacci-input-1").value;
+    let output = document.getElementById("fibonacci-output")
     output.innerHTML = "";
 
     let b = 0, temp;
@@ -11,4 +11,4 @@ function fibonacci(){
         b = temp;
     }
 }
-document.getElementById("fib-button").addEventListener("click", fibonacci)
+document.getElementById("fibonacci-button").addEventListener("click", fibonacci)
