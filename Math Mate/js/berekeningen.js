@@ -1,7 +1,7 @@
 //gebruik dit als template voor de berekeningen
 /*
 function berekening(){ //verander de naam van de functie naar de naam van de berekening
-    let input = document.getElementById("berekening-input-1").value; //verander id naar de juiste input veld
+    let input1 = document.getElementById("berekening-input-1").value; //verander id naar de juiste input veld
     let input2 = document.getElementById("berekening-input-2").value; //gebruik dit als er een tweede input is
     let output = document.getElementById("berekening-output") //verander id naar de juiste output veld
     output.innerHTML = "";
@@ -18,12 +18,12 @@ document.getElementById("berekening-button").addEventListener("click", berekenin
 
 
 function fibonacci(){
-    let input = document.getElementById("fibonacci-input-1").value;
+    let input1 = document.getElementById("fibonacci-input-1").value;
     let output = document.getElementById("fibonacci-output")
     output.innerHTML = "";
 
     let b = 0, temp;
-    for(let a = 1; a <= input; a){
+    for(let a = 1; a <= input1; a){
         output.innerHTML += a + "<br>";
         temp = a;
         a = a + b;
