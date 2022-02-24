@@ -36,13 +36,32 @@ function factorizer(){ //Danny
     let output = document.getElementById("factorizer-output");
     output.innerHTML = "";
     
+    let n = input1*1; // *1 maakt het een nummer
+    let divisor = 2;
+    let factors = [];
+    let result = "";
 
+    if(n > 1 && n % 1 == 0){
+        while(n > 1){
+            if(n % divisor == 0){
+                factors.push(divisor);
+                n = n / divisor;
+            }else{
+                divisor++;
+            }     
+        }
+        
+        result = factors[0];
 
-
+        for(let i = 1; i <= factors.length-1; i++){
+            result += "*" + factors[i];
+        }
+        
+    }else{
+        result = n;
+    }
+    output.innerHTML = result;
 }
 document.getElementById("factorizer-button").addEventListener("click", factorizer);
-
-
-
 
 
