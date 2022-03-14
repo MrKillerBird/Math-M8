@@ -13,32 +13,43 @@ function berekening(){ //verander de naam van de functie naar de naam van de ber
 document.getElementById("berekening-button").addEventListener("click", berekening); //verander naar de juiste button id en naam van de functie
 */
 
-function simpel1(){ //Erik
+function simpel(){ //Erik
     let input1 = document.getElementById("simpel-input-1").value*1;
     let bewerking = document.getElementById("simpel-input-bewerking").value;
     let input2 = document.getElementById("simpel-input-2").value*1;
     let output = document.getElementById("simpel-output");
     output.innerHTML = "";
 
-    if (bewerking == "+") {
-      output.innerHTML = input1 + input2;
-    } else if (bewerking == "-") {
-      output.innerHTML = input1 - input2;
-    } else if (bewerking == "%") {
-      output.innerHTML = input1 / 100 * input2;
-    } else if (bewerking == "*") {
-      output.innerHTML = input1 * input2;
-    } else if (bewerking == "/") {
-      output.innerHTML = input1 / input2;
-    } else if (bewerking == "^") {
-      output.innerHTML = input1 ** input2;
-    } else if (bewerking == "rest") {
-      output.innerHTML += input1 % input2;
-    } else {
-      output.innerHTML = "Error: geen bewerking aangegeven!";
-    }
+    switch (bewerking) {
+      case "+": output.innerHTML = input1 + input2;
+      break;
+      case "-": output.innerHTML = input1 - input2;
+      break;
+      case "%": output.innerHTML = input1 / 100 * input2;
+      break;
+      case "*": output.innerHTML = input1 * input2;
+      break;
+      case "/": output.innerHTML = input1 / input2;
+      break;
+      case "^": output.innerHTML = input1 ** input2;
+      break;
+      case "rest": output.innerHTML += input1 % input2;
+      break;
+
+      case "eo":
+      for (let i = input1; i > 0; i - 2) {
+        if (i == 0) {
+          output.innerHTML = "Even";
+        } else {
+          output.innerHTML = "Oneven";
+        }
+      }
+
+
+      default: output.innerHTML = "Error: geen bewerking aangegeven!";
+      break;
 }
-document.getElementById("simpel1-button").addEventListener("click", simpel1);
+document.getElementById("simpel-button").addEventListener("click", simpel);
 
 function fibonacci(){ //Danny
     let input1 = document.getElementById("fibonacci-input-1").value;
