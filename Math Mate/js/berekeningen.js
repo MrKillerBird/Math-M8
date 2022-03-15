@@ -66,30 +66,30 @@ function OverEngineered(){ //Danny
   output.innerHTML += inputArray + "<br>";
 
   for(let i = 0; i <= input1.length; i++){
-    
+
     switch(inputArray[i]){
       case "+":
         bewerkingen[bewerkingen.length] = "+";
         inputArray[i] = "";
         break;
       case "-":
-        bewerkingen[bewerkingen.length] = "-"; 
+        bewerkingen[bewerkingen.length] = "-";
         inputArray[i] = "";
         break;
       case "%":
-        bewerkingen[bewerkingen.length] = "%"; 
+        bewerkingen[bewerkingen.length] = "%";
         inputArray[i] = "";
         break;
       case "*":
-        bewerkingen[bewerkingen.length] = "*"; 
+        bewerkingen[bewerkingen.length] = "*";
         inputArray[i] = "";
         break;
       case "/":
-        bewerkingen[bewerkingen.length] = "/"; 
+        bewerkingen[bewerkingen.length] = "/";
         inputArray[i] = "";
         break;
       case "^":
-        bewerkingen[bewerkingen.length] = "^"; 
+        bewerkingen[bewerkingen.length] = "^";
         inputArray[i] = "";
         break;
     }
@@ -204,26 +204,18 @@ function factorizer(){ //Danny
 }
 document.getElementById("factorizer-button").addEventListener("click", factorizer);
 
-
-//Machten Davey
-function machten(){
-   let input1= document.getElementById("machten-input-1").value;       
-   let input2= document.getElementById("machten-input-2").value;
+function machten(){ //Davey
+   let input1= document.getElementById("machten-input-1").value*1;
+   let input2= document.getElementById("machten-input-2").value*1;
    let output = document.getElementById("machten-output");
    output.innerHTML = "";
-   input1*1; input2*1;
-  for(let index= 0; index < document.getElementById("machten-input-2").value; index++){
-    input1*input1
-    
-  
-  
-  
-  
-  
-  
-  
+
+  for(let index= 0; index <= input2; index++){
+    output.innerHTML += input1 ** index + "<br>";
   }
 }
+document.getElementById("machten-button").addEventListener("click", machten);
+
 function tafels(){ //Erik
     let input1 = document.getElementById("tafels-input-1").value*1;
     let input2 = document.getElementById("tafels-input-2").value*1;
