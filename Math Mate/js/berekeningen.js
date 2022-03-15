@@ -44,11 +44,10 @@ function simpel(){ //Erik
           output.innerHTML = "Oneven";
         }
       }
-
-
       default: output.innerHTML = "Error: geen bewerking aangegeven!";
       break;
-}
+    }
+  }
 document.getElementById("simpel-button").addEventListener("click", simpel);
 
 
@@ -225,3 +224,28 @@ function machten(){
   
   }
 }
+function tafels(){ //Erik
+    let input1 = document.getElementById("tafels-input-1").value*1;
+    let input2 = document.getElementById("tafels-input-2").value*1;
+    let output = document.getElementById("tafels-output");
+    output.innerHTML = "";
+
+    for (let currentNumber = 1; currentNumber <= input2; currentNumber++) {
+      let ant = input1 * currentNumber;
+      output.innerHTML += input1 + " * " + currentNumber + " = " + ant + "<br>";
+    }
+}
+document.getElementById("tafels-button").addEventListener("click", tafels);
+
+function breuken(){ //Erik
+    let input1 = document.getElementById("breuken-input-1").value*1;
+    let output = document.getElementById("breuken-output");
+    output.innerHTML = "";
+
+    for (let currentNumber = 1; currentNumber <= input1; currentNumber++) {
+      let ant = 1 / currentNumber;
+      output.innerHTML += '1/'+ currentNumber + " = " + ant + "<br>";
+    }
+
+}
+document.getElementById("breuken-button").addEventListener("click", breuken);
