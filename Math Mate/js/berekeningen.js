@@ -204,3 +204,24 @@ function factorizer(){ //Danny
     output.innerHTML = result;
 }
 document.getElementById("factorizer-button").addEventListener("click", factorizer);
+
+
+//Machten Davey
+function machten(){
+   let input1= document.getElementById("machten-input-1").value;       
+   let input2= document.getElementById("machten-input-2").value;
+   let output = document.getElementById("machten-output");
+   output.innerHTML = "";
+   input1*1; input2*1;
+  for(let index= 0; index < document.getElementById("machten-input-2").value; index++){
+    input1*input1
+    
+  
+  
+  
+  
+  
+  
+  
+  }
+}
