@@ -50,6 +50,111 @@ function simpel(){ //Erik
   }
 document.getElementById("simpel-button").addEventListener("click", simpel);
 
+
+function OverEngineered(){ //Danny
+  let input1 = document.getElementById("OE-input-1").value;
+  let output = document.getElementById("OE-output");
+  output.innerHTML = "";
+
+  let inputArray = input1.split("");
+  let bewerkingen = [];
+  let getallen = [];
+  let getal = 0;
+
+  let som = [];
+
+  output.innerHTML += inputArray + "<br>";
+
+  for(let i = 0; i <= input1.length; i++){
+    
+    switch(inputArray[i]){
+      case "+":
+        bewerkingen[bewerkingen.length] = "+";
+        inputArray[i] = "";
+        break;
+      case "-":
+        bewerkingen[bewerkingen.length] = "-"; 
+        inputArray[i] = "";
+        break;
+      case "%":
+        bewerkingen[bewerkingen.length] = "%"; 
+        inputArray[i] = "";
+        break;
+      case "*":
+        bewerkingen[bewerkingen.length] = "*"; 
+        inputArray[i] = "";
+        break;
+      case "/":
+        bewerkingen[bewerkingen.length] = "/"; 
+        inputArray[i] = "";
+        break;
+      case "^":
+        bewerkingen[bewerkingen.length] = "^"; 
+        inputArray[i] = "";
+        break;
+    }
+  }
+  output.innerHTML += inputArray + "<br>";
+  output.innerHTML += bewerkingen + "<br>";
+
+  // 1+1-2+5-778+-40-110
+  for(let i = 0; i < inputArray.length; i++){
+    if(inputArray[i] == ""){
+      getallen[getal] = parseFloat(getallen[getal]);
+      getal += 2;
+      if(inputArray[i+1]){getallen[getal-1] = bewerkingen[getal/2-1];}
+    }else{
+      if(!getallen[getal]){getallen[getal] = "";}
+      getallen[getal] += inputArray[i];
+    }
+  }
+  output.innerHTML += getallen + "<br>" + "<br>";
+
+
+
+  for(let i = 0; i < getallen.length; i++){
+    if(getallen[i] == "^"){
+      getallen[i] = getallen[i-1] ** getallen[i+1];
+      getallen.splice(i-1,1);
+      getallen.splice(i,1);
+      output.innerHTML += getallen + "<br>";
+    }
+  }
+  for(let i = 0; i < getallen.length; i++){
+    if(getallen[i] == "*"){
+      getallen[i] = getallen[i-1] * getallen[i+1];
+      getallen.splice(i-1,1);
+      getallen.splice(i,1);
+      output.innerHTML += getallen + "<br>";
+    }
+    if(getallen[i] == "/"){
+      getallen[i] = getallen[i-1] / getallen[i+1];
+      getallen.splice(i-1,1);
+      getallen.splice(i,1);
+      output.innerHTML += getallen + "<br>";
+    }
+  }
+  for(let i = 0; i < getallen.length; i++){
+    if(getallen[1] == "+"){
+      getallen[1] = getallen[1-1] + getallen[1+1];
+      getallen.splice(1-1,1);
+      getallen.splice(1,1);
+      output.innerHTML += getallen + "<br>";
+    }
+    if(getallen[1] == "-"){
+      getallen[1] = getallen[1-1] - getallen[1+1];
+      getallen.splice(1-1,1);
+      getallen.splice(1,1);
+      output.innerHTML += getallen + "<br>";
+    }
+  }
+  output.innerHTML += "<br>" + getallen + "<br>";
+  if(!getallen[0]){output.innerHTML = "ERROR";}
+}
+document.getElementById("OE-button").addEventListener("click", OverEngineered);
+
+
+
 function fibonacci(){ //Danny
     let input1 = document.getElementById("fibonacci-input-1").value;
     let output = document.getElementById("fibonacci-output");
@@ -77,23 +182,23 @@ function factorizer(){ //Danny
     let result = "";
 
     if(n > 1 && n % 1 == 0){
-        while(n > 1){
-            if(n % divisor == 0){
-                factors.push(divisor);
-                n = n / divisor;
-            }else{
-                divisor++;
-            }
+      while(n > 1){
+        if(n % divisor == 0){
+          factors.push(divisor);
+          n = n / divisor;
+        }else{
+          divisor++;
         }
+      }
 
-        result = factors[0];
+      result = factors[0];
 
-        for(let i = 1; i <= factors.length-1; i++){
-            result += "*" + factors[i];
-        }
+      for(let i = 1; i <= factors.length-1; i++){
+        result += "*" + factors[i];
+      }
 
     }else{
-        result = n;
+      result = n;
     }
     output.innerHTML = result;
 }
