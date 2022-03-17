@@ -14,40 +14,41 @@ document.getElementById("berekening-button").addEventListener("click", berekenin
 */
 
 function simpel(){ //Erik
-    let input1 = document.getElementById("simpel-input-1").value*1;
-    let bewerking = document.getElementById("simpel-input-bewerking").value;
-    let input2 = document.getElementById("simpel-input-2").value*1;
-    let output = document.getElementById("simpel-output");
-    output.innerHTML = "";
+  let input1 = document.getElementById("simpel-input-1").value*1;
+  let bewerking = document.getElementById("simpel-input-bewerking").value;
+  let input2 = document.getElementById("simpel-input-2").value*1;
+  let output = document.getElementById("simpel-output");
+  output.innerHTML = "";
 
-    switch (bewerking) {
-      case "+": output.innerHTML = input1 + input2;
-      break;
-      case "-": output.innerHTML = input1 - input2;
-      break;
-      case "%": output.innerHTML = input1 / 100 * input2;
-      break;
-      case "*": output.innerHTML = input1 * input2;
-      break;
-      case "/": output.innerHTML = input1 / input2;
-      break;
-      case "^": output.innerHTML = input1 ** input2;
-      break;
-      case "rest": output.innerHTML += input1 % input2;
-      break;
+  switch (bewerking) {
+    case "+": output.innerHTML = input1 + input2;
+    break;
+    case "-": output.innerHTML = input1 - input2;
+    break;
+    case "%": output.innerHTML = input1 / 100 * input2;
+    break;
+    case "*": output.innerHTML = input1 * input2;
+    break;
+    case "/": output.innerHTML = input1 / input2;
+    break;
+    case "^": output.innerHTML = input1 ** input2;
+    break;
+    case "rest": output.innerHTML += input1 % input2;
+    break;
 
-      case "eo":
-      for (let i = input1; i > 0; i - 2) {
-        if (i == 0) {
-          output.innerHTML = "Even";
-        } else {
-          output.innerHTML = "Oneven";
-        }
+    case "eo":
+    for (let i = input1; i > 0; i - 2) {
+      if (i == 0) {
+        output.innerHTML = "Even";
+      } else {
+        output.innerHTML = "Oneven";
       }
+    }
 
 
-      default: output.innerHTML = "Error: geen bewerking aangegeven!";
-      break;
+    default: output.innerHTML = "Error: geen bewerking aangegeven!";
+    break;
+  }
 }
 document.getElementById("simpel-button").addEventListener("click", simpel);
 
@@ -57,25 +58,45 @@ function OverEngineered(){ //Danny
   let output = document.getElementById("OE-output");
   output.innerHTML = "";
 
+  let SyntaxErr = false;
+
+
+  let negativeNum = false;
+
   let inputArray = input1.split("");
   let bewerkingen = [];
   let getallen = [];
   let getal = 0;
 
-  let som = [];
+  if(input1 == ""){output.innerHTML = ""; return;}
 
   output.innerHTML += inputArray + "<br>";
 
-  for(let i = 0; i <= input1.length; i++){
-    
+
+
+  for(let i = 0; i < input1.length; i++){
+    if(inputArray[i] == " "){
+      inputArray.splice(i,1);
+    }
+  }
+
+  for(let i = 0; i < inputArray.length; i++){
     switch(inputArray[i]){
       case "+":
-        bewerkingen[bewerkingen.length] = "+";
-        inputArray[i] = "";
+        if(inputArray[i+1] != "-"){
+          bewerkingen[bewerkingen.length] = "+";
+          inputArray[i] = "";
+        }
         break;
       case "-":
-        bewerkingen[bewerkingen.length] = "-"; 
-        inputArray[i] = "";
+        if(inputArray[i+1] == "-"){
+          bewerkingen[bewerkingen.length] = "+";
+          inputArray[i] = "";
+          inputArray.splice(i+1,1);
+        }else{
+          bewerkingen[bewerkingen.length] = "-";
+          inputArray[i] = "";
+        }
         break;
       case "%":
         bewerkingen[bewerkingen.length] = "%"; 
@@ -93,15 +114,24 @@ function OverEngineered(){ //Danny
         bewerkingen[bewerkingen.length] = "^"; 
         inputArray[i] = "";
         break;
+      default:
+        //if(isNaN(parseFloat(inputArray[i]))){SyntaxErr = true;}
+        break;
     }
+    if(SyntaxErr){output.innerHTML = "<strong>Syntax Error</strong>"; return;}
   }
+
   output.innerHTML += inputArray + "<br>";
   output.innerHTML += bewerkingen + "<br>";
 
   // 1+1-2+5-778+-40-110
+
+  inputArray[inputArray.length] = "";
+
   for(let i = 0; i < inputArray.length; i++){
     if(inputArray[i] == ""){
       getallen[getal] = parseFloat(getallen[getal]);
+      output.innerHTML += getallen[getal] + "<br>";
       getal += 2;
       if(inputArray[i+1]){getallen[getal-1] = bewerkingen[getal/2-1];}
     }else{
@@ -109,7 +139,7 @@ function OverEngineered(){ //Danny
       getallen[getal] += inputArray[i];
     }
   }
-  output.innerHTML += getallen + "<br>" + "<br>";
+  output.innerHTML += "<br>" + getallen + "<br>";
 
 
 
@@ -134,23 +164,30 @@ function OverEngineered(){ //Danny
       getallen.splice(i,1);
       output.innerHTML += getallen + "<br>";
     }
+    if(getallen[i] == "%"){
+      getallen[i] = getallen[i-1] % getallen[i+1];
+      getallen.splice(i-1,1);
+      getallen.splice(i,1);
+      output.innerHTML += getallen + "<br>";
+    }
   }
   for(let i = 0; i < getallen.length; i++){
     if(getallen[1] == "+"){
-      getallen[1] = getallen[1-1] + getallen[1+1];
-      getallen.splice(1-1,1);
+      getallen[1] = getallen[0] + getallen[2];
+      getallen.splice(0,1);
       getallen.splice(1,1);
       output.innerHTML += getallen + "<br>";
     }
     if(getallen[1] == "-"){
-      getallen[1] = getallen[1-1] - getallen[1+1];
-      getallen.splice(1-1,1);
+      getallen[1] = getallen[0] - getallen[2];
+      getallen.splice(0,1);
       getallen.splice(1,1);
       output.innerHTML += getallen + "<br>";
     }
   }
   output.innerHTML += "<br>" + getallen + "<br>";
-  if(!getallen[0]){output.innerHTML = "ERROR";}
+
+
 }
 document.getElementById("OE-button").addEventListener("click", OverEngineered);
 
