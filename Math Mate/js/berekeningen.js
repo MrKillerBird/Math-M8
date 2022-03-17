@@ -69,8 +69,6 @@ function OverEngineered() { //Danny
     let SyntaxErr = false;
 
 
-    let negativeNum = false;
-
     let inputArray = input1.split("");
     let bewerkingen = [];
     let getallen = [];
@@ -83,7 +81,7 @@ function OverEngineered() { //Danny
 
 
     for (let i = 0; i < input1.length; i++) {
-        if (inputArray[i] == " ") {
+        while (inputArray[i] == " ") {
             inputArray.splice(i, 1);
         }
     }
@@ -91,42 +89,42 @@ function OverEngineered() { //Danny
     for (let i = 0; i < inputArray.length; i++) {
         switch (inputArray[i]) {
             case "+":
-                if (inputArray[i + 1] != "-") {
-                    bewerkingen[bewerkingen.length] = "+";
-                    inputArray[i] = "";
-                }
+                bewerkingen[bewerkingen.length] = "+";
                 break;
             case "-":
-                if (inputArray[i + 1] == "-") {
-                    bewerkingen[bewerkingen.length] = "+";
-                    inputArray[i] = "";
-                    inputArray.splice(i + 1, 1);
+                if (isNaN(parseFloat(inputArray[i - 1]))) {
+                    inputArray[i + 1] = inputArray[i] + inputArray[i + 1];
+                    inputArray.splice(i, 1);
                 } else {
                     bewerkingen[bewerkingen.length] = "-";
-                    inputArray[i] = "";
                 }
                 break;
             case "%":
                 bewerkingen[bewerkingen.length] = "%";
-                inputArray[i] = "";
                 break;
             case "*":
                 bewerkingen[bewerkingen.length] = "*";
-                inputArray[i] = "";
                 break;
             case "/":
                 bewerkingen[bewerkingen.length] = "/";
-                inputArray[i] = "";
                 break;
             case "^":
                 bewerkingen[bewerkingen.length] = "^";
-                inputArray[i] = "";
+                break;
+            case "(":
+                bewerkingen[bewerkingen.length] = "(";
+                break;
+            case ")":
+                bewerkingen[bewerkingen.length] = ")";
                 break;
             default:
-                //if(isNaN(parseFloat(inputArray[i]))){SyntaxErr = true;}
+                if (isNaN(parseFloat(inputArray[i]))) { SyntaxErr = true; }
                 break;
         }
         if (SyntaxErr) { output.innerHTML = "<strong>Syntax Error</strong>"; return; }
+    }
+    for (let i = 0; i < inputArray.length; i++) {
+        if (isNaN(parseFloat(inputArray[i]))) { inputArray[i] = ""; }
     }
 
     output.innerHTML += inputArray + "<br>";
@@ -149,53 +147,67 @@ function OverEngineered() { //Danny
     }
     output.innerHTML += "<br>" + getallen + "<br>";
 
+    let haakIndex = 0;
 
-
-    for (let i = 0; i < getallen.length; i++) {
-        if (getallen[i] == "^") {
-            getallen[i] = getallen[i - 1] ** getallen[i + 1];
-            getallen.splice(i - 1, 1);
-            getallen.splice(i, 1);
-            output.innerHTML += getallen + "<br>";
+    function berekenen() {
+        
+        for (let i = haakIndex; i < getallen.length; i++) {
+            if (getallen[i] == "(") {
+                haakIndex = i;
+                getallen.splice(i, 1);
+            }
         }
+        output.innerHTML += haakIndex + "<br>";
+        for (let i = haakIndex; i < getallen.length; i++) {
+            if (getallen[i] == ")") {haakIndex = 0; getallen.splice(i, 1); return;}
+            if (getallen[i] == "^") {
+                getallen[i] = getallen[i - 1] ** getallen[i + 1];
+                getallen.splice(i - 1, 1);
+                getallen.splice(i, 1);
+                output.innerHTML += getallen + "<br>";
+            }
+        }
+        for (let i = haakIndex; i < getallen.length; i++) {
+            if (getallen[i] == ")") {haakIndex = 0; getallen.splice(i, 1); return;}
+            if (getallen[i] == "*") {
+                getallen[i] = getallen[i - 1] * getallen[i + 1];
+                getallen.splice(i - 1, 1);
+                getallen.splice(i, 1);
+                output.innerHTML += getallen + "<br>";
+            }
+            if (getallen[i] == "/") {
+                getallen[i] = getallen[i - 1] / getallen[i + 1];
+                getallen.splice(i - 1, 1);
+                getallen.splice(i, 1);
+                output.innerHTML += getallen + "<br>";
+            }
+            if (getallen[i] == "%") {
+                getallen[i] = getallen[i - 1] % getallen[i + 1];
+                getallen.splice(i - 1, 1);
+                getallen.splice(i, 1);
+                output.innerHTML += getallen + "<br>";
+            }
+        }
+        for (let i = haakIndex; i < getallen.length; i++) {
+            if (getallen[i] == ")") {haakIndex = 0; getallen.splice(i, 1); return;}
+            if (getallen[1] == "+") {
+                getallen[1] = getallen[0] + getallen[2];
+                getallen.splice(0, 1);
+                getallen.splice(1, 1);
+                output.innerHTML += getallen + "<br>";
+            }
+            if (getallen[1] == "-") {
+                getallen[1] = getallen[0] - getallen[2];
+                getallen.splice(0, 1);
+                getallen.splice(1, 1);
+                output.innerHTML += getallen + "<br>";
+            }
+        }
+        
     }
-    for (let i = 0; i < getallen.length; i++) {
-        if (getallen[i] == "*") {
-            getallen[i] = getallen[i - 1] * getallen[i + 1];
-            getallen.splice(i - 1, 1);
-            getallen.splice(i, 1);
-            output.innerHTML += getallen + "<br>";
-        }
-        if (getallen[i] == "/") {
-            getallen[i] = getallen[i - 1] / getallen[i + 1];
-            getallen.splice(i - 1, 1);
-            getallen.splice(i, 1);
-            output.innerHTML += getallen + "<br>";
-        }
-        if (getallen[i] == "%") {
-            getallen[i] = getallen[i - 1] % getallen[i + 1];
-            getallen.splice(i - 1, 1);
-            getallen.splice(i, 1);
-            output.innerHTML += getallen + "<br>";
-        }
-    }
-    for (let i = 0; i < getallen.length; i++) {
-        if (getallen[1] == "+") {
-            getallen[1] = getallen[0] + getallen[2];
-            getallen.splice(0, 1);
-            getallen.splice(1, 1);
-            output.innerHTML += getallen + "<br>";
-        }
-        if (getallen[1] == "-") {
-            getallen[1] = getallen[0] - getallen[2];
-            getallen.splice(0, 1);
-            getallen.splice(1, 1);
-            output.innerHTML += getallen + "<br>";
-        }
-    }
+    //if (isNaN(getallen)) { output.innerHTML = "<strong>Math Error</strong>"; return; }
+    if (getallen.length > 1) {berekenen();}
     output.innerHTML += "<br>" + getallen + "<br>";
-
-
 }
 document.getElementById("OE-button").addEventListener("click", OverEngineered);
 
