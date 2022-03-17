@@ -263,14 +263,14 @@ function factorizer() { //Danny
 }
 document.getElementById("factorizer-button").addEventListener("click", factorizer);
 
-function machten() { //Davey
+function machten() { //Erik & Davey
     let input1 = document.getElementById("machten-input-1").value * 1;
     let input2 = document.getElementById("machten-input-2").value * 1;
     let output = document.getElementById("machten-output");
     output.innerHTML = "";
 
-    for (let index = 0; index <= input2; index++) {
-        output.innerHTML += input1 ** index + "<br>";
+    for (let currentNumber = 0; currentNumber <= input2; currentNumber++) {
+      output.innerHTML += input1 + "^" + currentNumber + " = " + input1 ** currentNumber + "<br>";
     }
 }
 document.getElementById("machten-button").addEventListener("click", machten);
@@ -282,8 +282,7 @@ function tafels() { //Erik
     output.innerHTML = "";
 
     for (let currentNumber = 1; currentNumber <= input2; currentNumber++) {
-        let ant = input1 * currentNumber;
-        output.innerHTML += input1 + " * " + currentNumber + " = " + ant + "<br>";
+        output.innerHTML += input1 + " * " + currentNumber + " = " + input1 * currentNumber + "<br>";
     }
 }
 document.getElementById("tafels-button").addEventListener("click", tafels);
@@ -294,9 +293,20 @@ function breuken() { //Erik
     output.innerHTML = "";
 
     for (let currentNumber = 1; currentNumber <= input1; currentNumber++) {
-        let ant = 1 / currentNumber;
-        output.innerHTML += '1/' + currentNumber + " = " + ant + "<br>";
+        output.innerHTML += '1/' + currentNumber + " = " + 1 / currentNumber + "<br>";
     }
 
 }
 document.getElementById("breuken-button").addEventListener("click", breuken);
+
+function kwadraten() { //Erik
+    let input1 = document.getElementById("kwadraten-input-1").value * 1;
+    let output = document.getElementById("kwadraten-output");
+    output.innerHTML = "";
+
+    for (let currentNumber = 1; currentNumber <= input1; currentNumber++) {
+        output.innerHTML += currentNumber + "^2 = " + currentNumber ** 2 + "<br>";
+    }
+
+}
+document.getElementById("kwadraten-button").addEventListener("click", kwadraten);
