@@ -1,0 +1,9 @@
+.gradient-header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.gradient-header span {
+  font-size: 30pt;
+}
