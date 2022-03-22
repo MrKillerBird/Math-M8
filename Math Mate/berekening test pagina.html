@@ -1,176 +1,179 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="language" content="NL">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="groep 4">
-		<meta name="keywords" content="">
-		<title>Math Mate</title>
-		<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="language" content="NL">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="groep 4">
+	<meta name="keywords" content="">
+	<title>Math Mate</title>
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 </head>
-	<body>
-		<section class="berekening">
-			<h1>Simpele berekeningen</h1>
-			<input id="simpel-input-1" type="number">
-			<input id="simpel-input-bewerking" type="text">
-			<input id="simpel-input-2" type="number">
-			<button id="simpel-button">Calculate</button>
-			<br>
-			<span id="simpel-output"></span>
-		</section>
 
-		<section class="berekening">
-			<h1>Over-Engineered Rekenmachine</h1>
-			<input id="OE-input-1" type="text">
-			<button id="OE-button">Calculate</button>
-			<br>
-			<span id="OE-output"></span>
-		</section>
+<body>
+	<section class="berekening">
+		<h1>Simpele berekeningen</h1>
+		<input id="simpel-input-1" type="number">
+		<input id="simpel-input-bewerking" type="text">
+		<input id="simpel-input-2" type="number">
+		<button id="simpel-button">Calculate</button>
+		<br>
+		<span id="simpel-output"></span>
+	</section>
 
-		<section class="berekening">
-			<h1>Tafels</h1>
-			<input id="tafels-input-1" type="number">
-			<span>Tafel</span>
-			<br>
-			<input id="tafels-input-2" type="number">
-			<span>Maximale Vermenigvuldiging</span>
-			<br>
-			<button id="tafels-button">Calculate</button>
-			<br>
-			<span id="tafels-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Over-Engineered Rekenmachine</h1>
+		<input  id="OE-input-1" type="text">
+		<button id="OE-button">Calculate</button>
+		<br>
+		<span id="OE-output"></span>
+	</section>
 
-		<section class="berekening">
-			<h1>Machten</h1>
-			<input id="machten-input-1" type="number">
-			<span>Grondgetal</span>
-			<br>
-			<input id="machten-input-2" type="number">
-			<span>Maximale Exponent</span>
-			<br>
-			<button id="machten-button">Calculate</button>
-			<br>
-			<span id="machten-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Tafels</h1>
+		<input id="tafels-input-1" type="number">
+		<span>Tafel</span>
+		<br>
+		<input id="tafels-input-2" type="number">
+		<span>Maximale Vermenigvuldiging</span>
+		<br>
+		<button id="tafels-button">Calculate</button>
+		<br>
+		<span id="tafels-output"></span>
+	</section>
 
-		<section class="berekening">
-			<h1>Breuken</h1>
-			<input id="breuken-input-1" type="number">
-			<span>Maximale breuk</span>
-			<br>
-			<button id="breuken-button">Calculate</button>
-			<br>
-			<span id="breuken-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Machten</h1>
+		<input id="machten-input-1" type="number">
+		<span>Grondgetal</span>
+		<br>
+		<input id="machten-input-2" type="number">
+		<span>Maximale Exponent</span>
+		<br>
+		<button id="machten-button">Calculate</button>
+		<br>
+		<span id="machten-output"></span>
+	</section>
 
-		<section class="berekening">
-			<h1>Kwadraten</h1>
-			<input id="kwadraten-input-1" type="number">
-			<span>Maximale kwadraat</span>
-			<br>
-			<button id="kwadraten-button">Calculate</button>
-			<br>
-			<span id="kwadraten-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Breuken</h1>
+		<input id="breuken-input-1" type="number">
+		<span>Maximale breuk</span>
+		<br>
+		<button id="breuken-button">Calculate</button>
+		<br>
+		<span id="breuken-output"></span>
+	</section>
 
-
-		<section class="berekening">
-			<h1>Fibonacci</h1>
-			<input id="fibonacci-input-1" type="number">
-			<span>Fibonacci getallen tot</span>
-			<br>
-			<button id="fibonacci-button">Calculate</button>
-			<br>
-			<span id="fibonacci-output"></span>
-		</section>
-
-		<section class="berekening">
-			<h1>Priemgetallen</h1>
-			<input id="priemgetallen-input-1" type="number">
-			<span>Priem getallen tot</span>
-			<br>
-			<button id="priemgetallen-button">Calculate</button>
-			<br>
-			<span id="priemgetallen-output"></span>
-		</section>
-
-		<section class="berekening">
-			<h1>Collatz</h1>
-			<input id="collatz-input-1" type="number">
-			<span>Begin getal voor collatz</span>
-			<br>
-			<button id="collatz-button">Calculate</button>
-			<br>
-			<span id="collatz-output"></span>
-		</section>
-
-		<section class="berekening">
-			<h1>Perfect Number</h1>
-			<input id="perfectnumber-input-1" type="number">
-			<span>Controle getal</span>
-			<br>
-			<button id="perfectnumber-button">Calculate</button>
-			<br>
-			<span id="perfectnumber-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Kwadraten</h1>
+		<input id="kwadraten-input-1" type="number">
+		<span>Maximale kwadraat</span>
+		<br>
+		<button id="kwadraten-button">Calculate</button>
+		<br>
+		<span id="kwadraten-output"></span>
+	</section>
 
 
-		<section class="berekening">
-			<h1>Talstelsel</h1>
-			<select id="talstelsel-input-1">
-				<option value="binaire">Binaire</option>
-				<option value="decimaal" selected>Decimaal</option>
-				<option value="hexadecimaal">Hexadecimaal</option>
-			</select>
-			<span>Talstelsel van</span>
-			<br>
-			<select id="talstelsel-input-2">
-				<option value="binaire" selected>Binaire</option>
-				<option value="decimaal">Decimaal</option>
-				<option value="hexadecimaal">Hexadecimaal</option>
-			</select>
-			<span>Talstelsel tot</span>
-			<br>
-			<input id="talstelsel-input-3" type="text">
-			<span>Getal</span>
-			<br>
-			<button id="talstelsel-button">Calculate</button>
-			<br>
-			<span id="talstelsel-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Fibonacci</h1>
+		<input id="fibonacci-input-1" type="number">
+		<span>Fibonacci getallen tot</span>
+		<br>
+		<button id="fibonacci-button">Calculate</button>
+		<br>
+		<span id="fibonacci-output"></span>
+	</section>
 
-		<section class="berekening">
-			<h1>Factorizer</h1>
-			<input id="factorizer-input-1" type="number">
-			<span>Getal ontbinden</span>
-			<br>
-			<button id="factorizer-button">Calculate</button>
-			<br>
-			<span id="factorizer-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Priemgetallen</h1>
+		<input id="priemgetallen-input-1" type="number">
+		<span>Priem getallen tot</span>
+		<br>
+		<button id="priemgetallen-button">Calculate</button>
+		<br>
+		<span id="priemgetallen-output"></span>
+	</section>
 
-		<section class="berekening">
-			<h1>Romanizer</h1>
-			<input id="romanizer-input-1" type="number">
-			<span>Getal naar Romijnse cijfers</span>
-			<br>
-			<button id="romanizer-button">Calculate</button>
-			<br>
-			<span id="romanizer-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Collatz</h1>
+		<input id="collatz-input-1" type="number">
+		<span>Begin getal voor collatz</span>
+		<br>
+		<button id="collatz-button">Calculate</button>
+		<br>
+		<span id="collatz-output"></span>
+	</section>
 
-		<section class="berekening">
-			<h1>Morsenizer</h1>
-			<input id="morsenizer-input-1" type="text">
-			<span>Woord of zin naar morsecode</span>
-			<br>
-			<button id="morsenizer-button">Calculate</button>
-			<br>
-			<span id="morsenizer-output"></span>
-		</section>
+	<section class="berekening">
+		<h1>Perfect Number</h1>
+		<input id="perfectnumber-input-1" type="number">
+		<span>Controle getal</span>
+		<br>
+		<button id="perfectnumber-button">Calculate</button>
+		<br>
+		<span id="perfectnumber-output"></span>
+	</section>
 
-	</body>
-	<script src="./js/berekeningen.js"></script>
+
+	<section class="berekening">
+		<h1>Talstelsel</h1>
+		<select id="talstelsel-input-1">
+			<option value="binaire">Binaire</option>
+			<option value="decimaal" selected>Decimaal</option>
+			<option value="hexadecimaal">Hexadecimaal</option>
+		</select>
+		<span>Talstelsel van</span>
+		<br>
+		<select id="talstelsel-input-2">
+			<option value="binaire" selected>Binaire</option>
+			<option value="decimaal">Decimaal</option>
+			<option value="hexadecimaal">Hexadecimaal</option>
+		</select>
+		<span>Talstelsel tot</span>
+		<br>
+		<input id="talstelsel-input-3" type="text">
+		<span>Getal</span>
+		<br>
+		<button id="talstelsel-button">Calculate</button>
+		<br>
+		<span id="talstelsel-output"></span>
+	</section>
+
+	<section class="berekening">
+		<h1>Factorizer</h1>
+		<input id="factorizer-input-1" type="number">
+		<span>Getal ontbinden</span>
+		<br>
+		<button id="factorizer-button">Calculate</button>
+		<br>
+		<span id="factorizer-output"></span>
+	</section>
+
+	<section class="berekening">
+		<h1>Romanizer</h1>
+		<input id="romanizer-input-1" type="number">
+		<span>Getal naar Romijnse cijfers</span>
+		<br>
+		<button id="romanizer-button">Calculate</button>
+		<br>
+		<span id="romanizer-output"></span>
+	</section>
+
+	<section class="berekening">
+		<h1>Morsenizer</h1>
+		<input id="morsenizer-input-1" type="text">
+		<span>Woord of zin naar morsecode</span>
+		<br>
+		<button id="morsenizer-button">Calculate</button>
+		<br>
+		<span id="morsenizer-output"></span>
+	</section>
+
+</body>
+<script src="./js/berekeningen.js"></script>
+
 </html>
