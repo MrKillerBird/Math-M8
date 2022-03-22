@@ -142,7 +142,7 @@ function OverEngineered() { //Danny
     output.innerHTML += inputArray + "<br>";
     output.innerHTML += bewerkingen + "<br>";
 
-    // 1+1-2+5-778+-40-110
+    
 
     inputArray[inputArray.length] = "";
 
@@ -275,12 +275,11 @@ function OverEngineered() { //Danny
         else { vorigOutput = getallen + ";"; }
 
     }
-
-    // testberekening:
-    // ((5/3,1)7*2+0,4)^3+-((5(5,125+(6-20)))*2)^2--600%42,1
-
-
     output.innerHTML += "<br>" + getallen + "<br>";
+    
+    // testberekeningen:
+    // 1+1-2+5-778+-40-110
+    // ((5/3,1)7*2+0,4)^3+-((5(5,125+(6-20)))*2)^2--600%42,1
 }
 document.getElementById("OE-button").addEventListener("click", OverEngineered);
 
