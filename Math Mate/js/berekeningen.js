@@ -276,7 +276,8 @@ function OverEngineered() { //Danny
 
     }
 
-
+    // testberekening:
+    // ((5/3,1)7*2+0,4)^3+-((5(5,125+(6-20)))*2)^2--600%42,1
 
 
     output.innerHTML += "<br>" + getallen + "<br>";
