@@ -56,17 +56,6 @@ function simpel() { //Erik
         case "rest":
             output.innerHTML += input1 % input2;
             break;
-
-        case "eo":
-            for (let i = input1; i > 0; i - 2) {
-                if (i == 0) {
-                    output.innerHTML = "Even";
-                } else {
-                    output.innerHTML = "Oneven";
-                }
-            }
-
-
         default:
             output.innerHTML = "Error: geen bewerking aangegeven!";
             break;
@@ -74,20 +63,33 @@ function simpel() { //Erik
 }
 document.getElementById("simpel-button").addEventListener("click", simpel);
 
+function eo(){ //Erik
+    let input1 = document.getElementById("eo-input-1").value;
+    let output = document.getElementById("eo-output");
+    output.innerHTML = "";
+
+    let ant = input1 % 2;
+    if (ant == 0) {
+      output.innerHTML = "Dit getal is: Even";
+    } else {
+      output.innerHTML = "Dit getal is: Oneven";
+    }
+
+}
+document.getElementById("eo-button").addEventListener("click", eo);
 
 
 
 let OERdebug = false;
 let OERlive = false;
+let OERliveDelay = 1500;
 let OERbezig = false;
 async function OverEngineered() { //Danny
-    
     let input1 = document.getElementById("OE-input-1").value;
     let output = document.getElementById("OE-output");
     output.innerHTML = "";
 
-    let OERliveDelay = 1500;
-
+    
     let SyntaxErr = false;
     let inputArray = input1.split("");
     let bewerkingen = [];
@@ -165,6 +167,7 @@ async function OverEngineered() { //Danny
         output.innerHTML += inputArray + "<br>";
         output.innerHTML += bewerkingen + "<br>";
     }
+
 
 
     inputArray[inputArray.length] = "";
@@ -419,3 +422,25 @@ function kwadraten() { //Erik
 
 }
 document.getElementById("kwadraten-button").addEventListener("click", kwadraten);
+
+
+function priemgetallen() {
+    let input1 = document.getElementById("priemgetallen-input-1").value * 1;
+    let output = document.getElementById("priemgetallen-output");
+    output.innerHTML = "";
+
+    for(let currentNumber= 1; currentNumber <= input1; currentNumber++){
+        if currentNumber <= 1){
+            output.innerHTML= currentNumber + " is geen priemgetal!";
+        }else{
+            for(let i = 2; i < currentNumber; i++){
+                if(currentNumber % i == 0){
+                    output.innerHTML= currentNumber + " is geen priemgetal!";
+                }
+            }
+            output.innerHTML= currentNumber;
+
+        }
+    }
+
+    document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
