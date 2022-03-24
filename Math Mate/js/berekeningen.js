@@ -42,17 +42,6 @@ function simpel() { //Erik
         case "rest":
             output.innerHTML += input1 % input2;
             break;
-
-        case "eo":
-            for (let i = input1; i > 0; i - 2) {
-                if (i == 0) {
-                    output.innerHTML = "Even";
-                } else {
-                    output.innerHTML = "Oneven";
-                }
-            }
-
-
         default:
             output.innerHTML = "Error: geen bewerking aangegeven!";
             break;
