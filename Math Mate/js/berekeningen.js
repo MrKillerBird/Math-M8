@@ -13,6 +13,20 @@ function berekening(){ //verander de naam van de functie naar de naam van de ber
 document.getElementById("berekening-button").addEventListener("click", berekening); //verander naar de juiste button id en naam van de functie
 */
 
+
+
+function delay(t) {
+    // roep deze functie op voor delay, je gebruikt zo:
+    // await delay(tijd in ms);
+
+    // de functie waarin je de delay oproept moet beginnen met:
+    // async function
+
+    return new Promise(resolve => setTimeout(resolve, t));
+}
+
+
+
 function simpel() { //Erik
     let input1 = document.getElementById("simpel-input-1").value * 1;
     let bewerking = document.getElementById("simpel-input-bewerking").value;
@@ -64,14 +78,18 @@ function eo(){ //Erik
 }
 document.getElementById("eo-button").addEventListener("click", eo);
 
-function OverEngineered() { //Danny
+
+
+let OERdebug = false;
+let OERlive = false;
+async function OverEngineered() { //Danny
     let input1 = document.getElementById("OE-input-1").value;
     let output = document.getElementById("OE-output");
     output.innerHTML = "";
 
+
+
     let SyntaxErr = false;
-
-
     let inputArray = input1.split("");
     let bewerkingen = [];
     let getallen = [];
@@ -79,10 +97,10 @@ function OverEngineered() { //Danny
 
 
     if (input1 == "") { output.innerHTML = ""; return; }
+    if (input1 == "OERdebug") { OERdebug = !OERdebug; output.innerHTML = "debug mode: " + OERdebug; return; }
+    if (input1 == "OERlive") { OERlive = !OERlive; output.innerHTML = "live mode: " + OERlive; return; }
 
-    output.innerHTML += inputArray + "<br>";
-
-
+    if (OERdebug) { output.innerHTML += inputArray + "<br>"; }
 
     for (let i = 0; i < input1.length; i++) {
         while (inputArray[i] == " ") {
@@ -142,8 +160,10 @@ function OverEngineered() { //Danny
         if (isNaN(parseFloat(inputArray[i])) && inputArray[i] != ".") { inputArray[i] = ""; }
     }
 
-    output.innerHTML += inputArray + "<br>";
-    output.innerHTML += bewerkingen + "<br>";
+    if (OERdebug) {
+        output.innerHTML += inputArray + "<br>";
+        output.innerHTML += bewerkingen + "<br>";
+    }
 
 
 
@@ -152,13 +172,12 @@ function OverEngineered() { //Danny
     for (let i = 0; i < inputArray.length; i++) {
         if (inputArray[i] == "") {
             if (!isNaN(parseFloat(getallen[getal]))) { getallen[getal] = parseFloat(getallen[getal]); }
-            if (getallen[getal] !== undefined) { output.innerHTML += getallen[getal] + "<br>"; }
+            if (getallen[getal] !== undefined && OERdebug) { output.innerHTML += getallen[getal] + "<br>"; }
             getal += 2;
             if (isNaN(parseFloat(inputArray[i]))) { getallen[getal - 1] = bewerkingen[getal / 2 - 1]; }
         } else {
             if (!getallen[getal]) { getallen[getal] = ""; }
             getallen[getal] += inputArray[i];
-            //output.innerHTML += getallen[getal] + "<br>";
         }
     }
 
@@ -168,7 +187,7 @@ function OverEngineered() { //Danny
         else { undefInArray++; }
     }
 
-    output.innerHTML += "<br>" + getallen.join(" ") + "<br>";
+    if (!OERlive) { output.innerHTML += "<br>" + getallen.join(" ") + "<br>"; }
 
     let haakBegin = 0;
     let haakEind = 0;
@@ -193,6 +212,8 @@ function OverEngineered() { //Danny
             }
         }
 
+
+
         for (let i = haakBegin; i <= haakEind; i++) {
             if ((getallen[i - 1] == "(" || getallen[i - 1] == "-(") && !isNaN(getallen[i]) && getallen[i + 1] == ")") {
                 if (getallen[i - 1] == "-(") {
@@ -211,8 +232,9 @@ function OverEngineered() { //Danny
                     getallen.splice(i - 1, 1);
                     getallen.splice(i, 1);
                 }
-                output.innerHTML += "[Haakjes verwerken]" + "<br>";
-                output.innerHTML += getallen.join(" ") + "<br>";
+                if (!OERlive) {
+                    output.innerHTML += "[Haakjes verwerken]" + "<br>" + getallen.join(" ") + "<br>";
+                }
             }
         }
 
@@ -223,8 +245,9 @@ function OverEngineered() { //Danny
                 getallen[i] = getallen[i - 1] ** getallen[i + 1];
                 getallen.splice(i - 1, 1);
                 getallen.splice(i, 1);
-                output.innerHTML += "[Exponenten berekenen" + tussenhaakjes + "]" + "<br>";
-                output.innerHTML += getallen.join(" ") + "<br>";
+                if (!OERlive) {
+                    output.innerHTML += "[Exponenten berekenen" + tussenhaakjes + "]" + "<br>" + getallen.join(" ") + "<br>";
+                }
             }
         }
         for (let i = haakBegin; i < haakEind; i++) {
@@ -232,22 +255,25 @@ function OverEngineered() { //Danny
                 getallen[i] = getallen[i - 1] * getallen[i + 1];
                 getallen.splice(i - 1, 1);
                 getallen.splice(i, 1);
-                output.innerHTML += "[Vermenigvuldigen" + tussenhaakjes + "]" + "<br>";
-                output.innerHTML += getallen.join(" ") + "<br>";
+                if (!OERlive) {
+                    output.innerHTML += "[Vermenigvuldigen" + tussenhaakjes + "]" + "<br>" + getallen.join(" ") + "<br>";
+                }
             }
             if (getallen[i] == "/") {
                 getallen[i] = getallen[i - 1] / getallen[i + 1];
                 getallen.splice(i - 1, 1);
                 getallen.splice(i, 1);
-                output.innerHTML += "[Delen" + tussenhaakjes + "]" + "<br>";
-                output.innerHTML += getallen.join(" ") + "<br>";
+                if (!OERlive) {
+                    output.innerHTML += "[Delen" + tussenhaakjes + "]" + "<br>" + getallen.join(" ") + "<br>";
+                }
             }
             if (getallen[i] == "%") {
                 getallen[i] = ((getallen[i - 1] % getallen[i + 1]) + getallen[i + 1]) % getallen[i + 1];
                 getallen.splice(i - 1, 1);
                 getallen.splice(i, 1);
-                output.innerHTML += "[Modulus berekenen" + tussenhaakjes + "]" + "<br>";
-                output.innerHTML += getallen.join(" ") + "<br>";
+                if (!OERlive) {
+                    output.innerHTML += "[Modulus berekenen" + tussenhaakjes + "]" + "<br>" + getallen.join(" ") + "<br>";
+                }
             }
         }
         for (let i = haakBegin; i < haakEind - 1; i++) {
@@ -255,15 +281,17 @@ function OverEngineered() { //Danny
                 getallen[1 + haakjes + haakBegin] = getallen[haakjes + haakBegin] + getallen[2 + haakjes + haakBegin];
                 getallen.splice(haakjes + haakBegin, 1);
                 getallen.splice(1 + haakjes + haakBegin, 1);
-                output.innerHTML += "[Optellen" + tussenhaakjes + "]" + "<br>";
-                output.innerHTML += getallen.join(" ") + "<br>";
+                if (!OERlive) {
+                    output.innerHTML += "[Optellen" + tussenhaakjes + "]" + "<br>" + getallen.join(" ") + "<br>";
+                }
             }
             if (getallen[1 + haakjes + haakBegin] == "-") {
                 getallen[1 + haakjes + haakBegin] = getallen[haakjes + haakBegin] - getallen[2 + haakjes + haakBegin];
                 getallen.splice(haakjes + haakBegin, 1);
                 getallen.splice(1 + haakjes + haakBegin, 1);
-                output.innerHTML += "[Aftrekken" + tussenhaakjes + "]" + "<br>";
-                output.innerHTML += getallen.join(" ") + "<br>";
+                if (!OERlive) {
+                    output.innerHTML += "[Aftrekken" + tussenhaakjes + "]" + "<br>" + getallen.join(" ") + "<br>";
+                }
             }
         }
     }
@@ -271,14 +299,18 @@ function OverEngineered() { //Danny
     let vorigOutput;
     let zelfdeOutput = 0;
     while (getallen.length > 1) {
+        //if (OERlive) {}
+        await delay(2000);
         berekenen();
         if (getallen + ";" == vorigOutput) { zelfdeOutput++; } else { zelfdeOutput = 0 }
         if (zelfdeOutput == 2) { haakBegin = 0 }
         if (zelfdeOutput == 3) { output.innerHTML += "<br>" + "<strong>Error while calculating</strong>"; break; }
         else { vorigOutput = getallen + ";"; }
-
     }
-    output.innerHTML += "<br>" + getallen + "<br>";
+
+    if (OERlive) {output.innerHTML += "<br>" + getallen + "<br>";}
+
+    //clearInterval(timer);
 
     // testberekeningen:
     // 1+1-2+5-778+-40-110
@@ -385,3 +417,25 @@ function kwadraten() { //Erik
 
 }
 document.getElementById("kwadraten-button").addEventListener("click", kwadraten);
+
+
+function priemgetallen() {
+    let input1 = document.getElementById("priemgetallen-input-1").value * 1;
+    let output = document.getElementById("priemgetallen-output");
+    output.innerHTML = "";
+
+    for(let currentNumber= 1; currentNumber <= input1; currentNumber++){
+        if currentNumber <= 1){
+            output.innerHTML= currentNumber + " is geen priemgetal!";
+        }else{
+            for(let i = 2; i < currentNumber; i++){
+                if(currentNumber % i == 0){
+                    output.innerHTML= currentNumber + " is geen priemgetal!";
+                }
+            }
+            output.innerHTML= currentNumber;
+
+        }
+    }
+
+    document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
