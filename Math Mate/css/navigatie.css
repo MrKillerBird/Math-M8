@@ -45,7 +45,7 @@ nav.mEenvrk li.mEenvrk,
 nav.mComplrk li.mComplrk,
 nav.mOmrk li.mOmrk {
   color: #000000;
-	background-color: #FF92DB;
+	background-color: #13BDEC;
 }
 
 li.dropdown {
@@ -55,7 +55,7 @@ li.dropdown {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
   z-index: 1;

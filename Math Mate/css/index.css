@@ -1,0 +1,41 @@
+.headerclippy-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 48px;
+  height: calc(40vh - 48px);
+}
+
+.headerclippy-img {
+  height: 25vh;
+}
+
+@media screen and (max-width: 600px) {
+  .headerclippy-img {
+    height: 17vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .headerclippy-img {
+    height: 12vh;
+  }
+}
+
+.index-container {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-msg {
+  padding: 3rem 0rem 3rem 0rem;
+  width: 60vw;
+  font-weight: 300;
+}
+
+@media screen and (max-width: 500px) {
+  .welcome-msg {
+    width: 80vw;
+  }
+}
