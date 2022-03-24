@@ -413,3 +413,27 @@ function kwadraten() { //Erik
 
 }
 document.getElementById("kwadraten-button").addEventListener("click", kwadraten);
+
+
+function priemgetallen() {
+    let input1 = document.getElementById("priemgetallen-input-1").value * 1;
+    let output = document.getElementById("priemgetallen-output");
+    output.innerHTML = "";
+
+    for(let currentNumber= 1; currentNumber <= input1; currentNumber++){
+        if currentNumber <= 1){
+            output.innerHTML= currentNumber + " is geen priemgetal!";
+        }else{
+            for(let i = 2; i < currentNumber; i++){
+                if(currentNumber % i == 0){
+                    output.innerHTML= currentNumber + " is geen priemgetal!";
+                }
+            }
+            output.innerHTML= currentNumber;
+            
+        }
+    }
+
+    document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
+
+
