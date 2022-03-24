@@ -60,6 +60,20 @@ function simpel() { //Erik
 }
 document.getElementById("simpel-button").addEventListener("click", simpel);
 
+function eo(){ //Erik
+    let input1 = document.getElementById("eo-input-1").value;
+    let output = document.getElementById("eo-output");
+    output.innerHTML = "";
+
+    let ant = input1 % 2;
+    if (ant == 0) {
+      output.innerHTML = "Dit getal is: Even";
+    } else {
+      output.innerHTML = "Dit getal is: Oneven";
+    }
+    
+}
+document.getElementById("eo-button").addEventListener("click", eo);
 
 function OverEngineered() { //Danny
     let input1 = document.getElementById("OE-input-1").value;
@@ -140,7 +154,7 @@ function OverEngineered() { //Danny
     for (let i = 0; i < inputArray.length; i++) {
         if (inputArray[i] == "") {
             if(!isNaN(parseFloat(getallen[getal]))){getallen[getal] = parseFloat(getallen[getal]);}
-            
+
             //output.innerHTML += getallen[getal] + "<br>";
             getal += 2;
             if (isNaN(parseFloat(inputArray[i]))) { getallen[getal - 1] = bewerkingen[getal / 2 - 1]; }
@@ -148,18 +162,18 @@ function OverEngineered() { //Danny
             if (!getallen[getal]) { getallen[getal] = ""; }
             getallen[getal] += inputArray[i];
             output.innerHTML += getallen[getal] + "<br>";
-            
+
         }
     }
-   
+
     output.innerHTML += "<br>" + getallen + "<br>";
-    
+
     let undefInArray2 = 0;
     while(getallen.includes(undefined) && undefInArray2 < getallen.length){
         if(getallen[undefInArray2] === undefined){getallen.splice(undefInArray2, 1);}
         else{undefInArray2++;}
     }
-   
+
 
     let haakBegin = 0;
     let haakEind = 0;
@@ -236,7 +250,7 @@ function OverEngineered() { //Danny
         berekenen();
         if(getallen + ";" == vorigOutput){output.innerHTML += "<br>" +"<strong>Error while calculating</strong>"; break;}
         else{vorigOutput = getallen + ";";}
-        
+
     }
     output.innerHTML += "<br>" + getallen + "<br>";
 }
