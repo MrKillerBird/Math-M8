@@ -1,0 +1,10 @@
+.index-container {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-msg {
+  padding: 3rem 0rem 0rem 0rem;
+  width: 60vw;
+  font-weight: 300;
+}
