@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Math Mate">
+  <meta name="author" content="Jesca Wiegers">
+  <meta name="keywords" content="">
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/master.css">
+  <link rel="stylesheet" type="text/css" href="css/navigatie.css">
+  <link rel="stylesheet" type="text/css" href="css/omrekenen.css">
+  <script src="js/dropdown.js"></script>
+  <script src="js/topnav.js"></script>
+  <title>Math Mate</title>
+</head>
+
+<body>
+  <header>
+
+    <section class="logo__header">
+      <img class="logo__img" src="images/skelet-img/mathmatelogo.png">
+      <span class="logo__text">Math Mate</span>
+    </section>
+
+    <nav class="mEenvbr">
+      <ul class="topnav" id="myTopnav">
+        <li class="mPres">
+          <a href="#">Presentaties</a>
+        </li>
+
+        <li class="dropdown mEenvbr">
+          <a class="dropdown-button" onClick="showSubmenu(1)">Eenvoudige Berekeningen &#x25BE;</a>
+        	<section class="dropdown-content" id="myDropdown1">
+            <a class="hover" href="#">Optellen</a>
+            <a class="hover" href="#">Aftrekken</a>
+        		<a class="hover" href="#">Vermenigvuldigen</a>
+            <a class="hover" href="#">Delen</a>
+            <a class="hover" href="#">Machtsverheffen</a>
+            <a class="hover" href="#">Percentage</a>
+            <a class="hover" href="#">Restwaarde</a>
+            <a class="hover" href="#">Even of Oneven</a>
+        	</section>
+        </li>
+
+        <li class="dropdown mEenvrk">
+          <a class="dropdown-button" onClick="showSubmenu(2)">Eenvoudige Reeksen &#x25BE;</a>
+        	<section class="dropdown-content" id="myDropdown2">
+            <a class="hover" href="#">Tafels</a>
+            <a class="hover" href="#">Machten</a>
+        		<a class="hover" href="#">Breuken</a>
+            <a class="hover" href="#">Kwadraten</a>
+        	</section>
+        </li>
+
+        <li class="dropdown mComplrk">
+          <a class="dropdown-button" onClick="showSubmenu(3)">Complexe Reeksen &#x25BE;</a>
+        	<section class="dropdown-content" id="myDropdown3">
+            <a class="hover" href="#">Fibonacci</a>
+            <a class="hover" href="#">Priemgetallen</a>
+        		<a class="hover" href="#">Collatz Conjucture</a>
+            <a class="hover" href="#">Perfect Number</a>
+        	</section>
+        </li>
+
+        <li class="dropdown mOmrk">
+          <a class="dropdown-button" onClick="showSubmenu(4)">Omrekenen &#x25BE;</a>
+        	<section class="dropdown-content" id="myDropdown4">
+            <a class="hover" href="#">Talstelsels</a>
+            <a class="hover" href="#">Factorizer</a>
+        		<a class="hover" href="#">Romanizer</a>
+            <a class="hover" href="#">Morsenizer</a>
+        	</section>
+        </li>
+
+        <li class="burger-icon">
+        	<section><a href="#" onclick="Navigatie()">&#9776;</a></section>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- <section class="logo__header">
+      <img class="logo__img" src="images/mathmatelogo.png">
+      <span class="logo__text">Math Mate</span>
+    </section> -->
+
+    <section class="gradient-header">
+      <span>Omrekenen</span>
+    </section>
+
+  </header>
+
+  <main>
+    <article>
+      <section class="berekening">
+  			<h1>Talstelsel</h1>
+  			<select id="talstelsel-input-1">
+  				<option value="binaire">Binaire</option>
+  				<option value="decimaal" selected>Decimaal</option>
+  				<option value="hexadecimaal">Hexadecimaal</option>
+  			</select>
+  			<span>Talstelsel van</span>
+  			<br>
+  			<select id="talstelsel-input-2">
+  				<option value="binaire" selected>Binaire</option>
+  				<option value="decimaal">Decimaal</option>
+  				<option value="hexadecimaal">Hexadecimaal</option>
+  			</select>
+  			<span>Talstelsel tot</span>
+  			<br>
+  			<input id="talstelsel-input-3" type="text">
+  			<span>Getal</span>
+  			<br>
+  			<button id="talstelsel-button">Calculate</button>
+  			<br>
+  			<span id="talstelsel-output"></span>
+  		</section>
+
+  		<section class="berekening">
+  			<h1>Factorizer</h1>
+  			<input id="factorizer-input-1" type="number">
+  			<span>Getal ontbinden</span>
+  			<br>
+  			<button id="factorizer-button">Calculate</button>
+  			<br>
+  			<span id="factorizer-output"></span>
+  		</section>
+
+  		<section class="berekening">
+  			<h1>Romanizer</h1>
+  			<input id="romanizer-input-1" type="number">
+  			<span>Getal naar Romijnse cijfers</span>
+  			<br>
+  			<button id="romanizer-button">Calculate</button>
+  			<br>
+  			<span id="romanizer-output"></span>
+  		</section>
+
+  		<section class="berekening">
+  			<h1>Morsenizer</h1>
+  			<input id="morsenizer-input-1" type="text">
+  			<span>Woord of zin naar morsecode</span>
+  			<br>
+  			<button id="morsenizer-button">Calculate</button>
+  			<br>
+  			<span id="morsenizer-output"></span>
+  		</section>
+    </article>
+  </main>
+
+  <footer class="container-footer">
+    <section class="container-footer__row">
+      <span class="big-font">Math Mate</span>
+    </section>
+
+    <section class="container-footer__row">
+      <span>Disclaimer</span><span>Copyright</span>
+    </section>
+  </footer>
+
+</body>
+<script src="js/berekeningen.js"></script>
+</html>
