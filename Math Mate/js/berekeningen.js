@@ -449,22 +449,28 @@ if(document.getElementById("kwadraten-button")){
 
 
 function priemgetallen() {
-    let input1 = document.getElementById("priemgetallen-input-1").value * 1;
+    let input1 = document.getElementById("priemgetallen-input-1").value;
     let output = document.getElementById("priemgetallen-output");
     output.innerHTML = "";
 
-    for(let currentNumber= 1; currentNumber <= input1; currentNumber++){
-        if (currentNumber <= 1){
-            output.innerHTML= currentNumber + " is geen priemgetal!";
-        }else{
-            for(let i = 2; i < currentNumber; i++){
-                if(currentNumber % i == 0){
-                    output.innerHTML= currentNumber + " is geen priemgetal!";
-                }
-            }
-            output.innerHTML = currentNumber;
+    let getallen = [];
+    let huidigGetal;
 
+    for(let i = 2; i <= input1; i++){ //zet alle nummers van 2 tot de max in een array
+        getallen[i-2] = i;
+    }
+    
+    for(let i = 0; i < getallen.length; i++){ //gaat door alle getallen in de array
+        huidigGetal = getallen[i];
+        for(let i = 0; i < getallen.length; i++){
+            if(getallen[i] != huidigGetal && getallen[i] % huidigGetal == 0){ //kijkt of de getal in de array deelbaar is door het huidige getal en niet het huidige getal zelf is
+                getallen.splice(i,1); //haalt nummer in de array weg als de stelling hierboven waar is
+            }
         }
     }
+    output.innerHTML = getallen.join(", ");
 }
-document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
+if(document.getElementById("priemgetallen-button")){
+    document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
+}
+
