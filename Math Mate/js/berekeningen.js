@@ -338,14 +338,17 @@ function fibonacci() { //Danny
     let output = document.getElementById("fibonacci-output");
     output.innerHTML = "";
 
+    let getallen = [];
+
     let b = 0,
         temp;
     for (let a = 1; a <= input1; a) {
-        output.innerHTML += a + "<br>";
+        getallen[getallen.length] = a;
         temp = a;
         a = a + b;
         b = temp;
     }
+    output.innerHTML = getallen.join(", ");
 }
 if(document.getElementById("fibonacci-button")){
     document.getElementById("fibonacci-button").addEventListener("click", fibonacci);
