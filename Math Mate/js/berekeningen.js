@@ -444,3 +444,4 @@ function priemgetallen() {
     }
 }
 document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
+  
