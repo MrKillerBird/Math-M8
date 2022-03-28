@@ -453,13 +453,13 @@ function priemgetallen() {
     let output = document.getElementById("priemgetallen-output");
     output.innerHTML = "";
 
-    for (let currentNumber = 1; currentNumber <= input1; currentNumber++) {
-        if (currentNumber <= 1) {
-            output.innerHTML = currentNumber + " is geen priemgetal!";
-        } else {
-            for (let i = 2; i < currentNumber; i++) {
-                if (currentNumber % i == 0) {
-                    output.innerHTML = currentNumber + " is geen priemgetal!";
+    for(let currentNumber= 1; currentNumber <= input1; currentNumber++){
+        if (currentNumber <= 1){
+            output.innerHTML= currentNumber + " is geen priemgetal!";
+        }else{
+            for(let i = 2; i < currentNumber; i++){
+                if(currentNumber % i == 0){
+                    output.innerHTML= currentNumber + " is geen priemgetal!";
                 }
             }
             output.innerHTML = currentNumber;
