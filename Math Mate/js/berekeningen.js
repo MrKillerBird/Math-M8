@@ -425,7 +425,7 @@ function priemgetallen() {
     output.innerHTML = "";
 
     for(let currentNumber= 1; currentNumber <= input1; currentNumber++){
-        if currentNumber <= 1){
+        if (currentNumber <= 1){
             output.innerHTML= currentNumber + " is geen priemgetal!";
         }else{
             for(let i = 2; i < currentNumber; i++){
@@ -437,5 +437,5 @@ function priemgetallen() {
 
         }
     }
-
+}
     document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
