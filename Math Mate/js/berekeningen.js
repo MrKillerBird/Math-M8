@@ -63,16 +63,16 @@ function simpel() { //Erik
 }
 document.getElementById("simpel-button").addEventListener("click", simpel);
 
-function eo(){ //Erik
+function eo() { //Erik
     let input1 = document.getElementById("eo-input-1").value;
     let output = document.getElementById("eo-output");
     output.innerHTML = "";
 
     let ant = input1 % 2;
     if (ant == 0) {
-      output.innerHTML = "Dit getal is: Even";
+        output.innerHTML = "Dit getal is: Even";
     } else {
-      output.innerHTML = "Dit getal is: Oneven";
+        output.innerHTML = "Dit getal is: Oneven";
     }
 
 }
@@ -89,7 +89,7 @@ async function OverEngineered() { //Danny
     let output = document.getElementById("OE-output");
     output.innerHTML = "";
 
-    
+
     let SyntaxErr = false;
     let inputArray = input1.split("");
     let bewerkingen = [];
@@ -97,7 +97,7 @@ async function OverEngineered() { //Danny
     let getal = 0;
 
 
-    if (input1.replace(/ /g,"") == "") { output.innerHTML = ""; return; }
+    if (input1.replace(/ /g, "") == "") { output.innerHTML = ""; return; }
     if (input1 == "OERdebug") { OERdebug = !OERdebug; output.innerHTML = "debug mode: " + OERdebug; return; }
     if (input1 == "OERlive") { OERlive = !OERlive; output.innerHTML = "live mode: " + OERlive; return; }
 
@@ -190,7 +190,7 @@ async function OverEngineered() { //Danny
         else { undefInArray++; }
     }
 
-    if (OERlive) { output.innerHTML = "[Som]" + "<br>" + getallen.join(" ") + "<br>"; await delay(OERliveDelay);}
+    if (OERlive) { output.innerHTML = "[Som]" + "<br>" + getallen.join(" ") + "<br>"; await delay(OERliveDelay); }
     else { output.innerHTML += "<br>" + getallen.join(" ") + "<br>"; }
 
     let haakBegin = 0;
@@ -319,8 +319,8 @@ async function OverEngineered() { //Danny
     // 1+1-2+5-778+-40-110
     // ((5/3,1)7*2+0,4)^3+-((5(5,125+(6-20)))*2)^2--600%42,1
 }
-document.getElementById("OE-button").addEventListener("click", function(){
-    if(!OERbezig){OverEngineered();}
+document.getElementById("OE-button").addEventListener("click", function () {
+    if (!OERbezig) { OverEngineered(); }
 });
 
 
@@ -429,18 +429,18 @@ function priemgetallen() {
     let output = document.getElementById("priemgetallen-output");
     output.innerHTML = "";
 
-    for(let currentNumber= 1; currentNumber <= input1; currentNumber++){
-        if currentNumber <= 1){
-            output.innerHTML= currentNumber + " is geen priemgetal!";
-        }else{
-            for(let i = 2; i < currentNumber; i++){
-                if(currentNumber % i == 0){
-                    output.innerHTML= currentNumber + " is geen priemgetal!";
+    for (let currentNumber = 1; currentNumber <= input1; currentNumber++) {
+        if (currentNumber <= 1) {
+            output.innerHTML = currentNumber + " is geen priemgetal!";
+        } else {
+            for (let i = 2; i < currentNumber; i++) {
+                if (currentNumber % i == 0) {
+                    output.innerHTML = currentNumber + " is geen priemgetal!";
                 }
             }
-            output.innerHTML= currentNumber;
+            output.innerHTML = currentNumber;
 
         }
     }
-
-    document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
+}
+document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
