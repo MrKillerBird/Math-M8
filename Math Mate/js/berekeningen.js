@@ -61,7 +61,9 @@ function simpel() { //Erik
             break;
     }
 }
-document.getElementById("simpel-button").addEventListener("click", simpel);
+if(document.getElementById("simpel-button")){
+    document.getElementById("simpel-button").addEventListener("click", simpel);
+}
 
 function eo() { //Erik
     let input1 = document.getElementById("eo-input-1").value;
@@ -76,7 +78,10 @@ function eo() { //Erik
     }
 
 }
-document.getElementById("eo-button").addEventListener("click", eo);
+if(document.getElementById("eo-button")){
+    document.getElementById("eo-button").addEventListener("click", eo);
+}
+
 
 
 
@@ -319,9 +324,12 @@ async function OverEngineered() { //Danny
     // 1+1-2+5-778+-40-110
     // ((5/3,1)7*2+0,4)^3+-((5(5,125+(6-20)))*2)^2--600%42,1
 }
-document.getElementById("OE-button").addEventListener("click", function () {
-    if (!OERbezig) { OverEngineered(); }
-});
+if(document.getElementById("OE-button")){
+    document.getElementById("OE-button").addEventListener("click", function () {
+        if (!OERbezig) { OverEngineered(); }
+    });
+}
+
 
 
 
@@ -339,8 +347,9 @@ function fibonacci() { //Danny
         b = temp;
     }
 }
-document.getElementById("fibonacci-button").addEventListener("click", fibonacci);
-
+if(document.getElementById("fibonacci-button")){
+    document.getElementById("fibonacci-button").addEventListener("click", fibonacci);
+}
 
 function factorizer() { //Danny
     let input1 = document.getElementById("factorizer-input-1").value;
@@ -373,7 +382,10 @@ function factorizer() { //Danny
     }
     output.innerHTML = result;
 }
-document.getElementById("factorizer-button").addEventListener("click", factorizer);
+if(document.getElementById("factorizer-button")){
+    document.getElementById("factorizer-button").addEventListener("click", factorizer);
+}
+
 
 function machten() { //Erik & Davey
     let input1 = document.getElementById("machten-input-1").value * 1;
@@ -385,7 +397,10 @@ function machten() { //Erik & Davey
         output.innerHTML += input1 + "^" + currentNumber + " = " + input1 ** currentNumber + "<br>";
     }
 }
-document.getElementById("machten-button").addEventListener("click", machten);
+if(document.getElementById("machten-button")){
+    document.getElementById("machten-button").addEventListener("click", machten);
+}
+
 
 function tafels() { //Erik
     let input1 = document.getElementById("tafels-input-1").value * 1;
@@ -397,7 +412,10 @@ function tafels() { //Erik
         output.innerHTML += input1 + " * " + currentNumber + " = " + input1 * currentNumber + "<br>";
     }
 }
-document.getElementById("tafels-button").addEventListener("click", tafels);
+if(document.getElementById("tafels-button")){
+    document.getElementById("tafels-button").addEventListener("click", tafels);
+}
+
 
 function breuken() { //Erik
     let input1 = document.getElementById("breuken-input-1").value * 1;
@@ -409,7 +427,10 @@ function breuken() { //Erik
     }
 
 }
-document.getElementById("breuken-button").addEventListener("click", breuken);
+if(document.getElementById("breuken-button")){
+    document.getElementById("breuken-button").addEventListener("click", breuken);
+}
+
 
 function kwadraten() { //Erik
     let input1 = document.getElementById("kwadraten-input-1").value * 1;
@@ -421,7 +442,10 @@ function kwadraten() { //Erik
     }
 
 }
-document.getElementById("kwadraten-button").addEventListener("click", kwadraten);
+if(document.getElementById("kwadraten-button")){
+    document.getElementById("kwadraten-button").addEventListener("click", kwadraten);
+}
+
 
 
 function priemgetallen() {
@@ -443,4 +467,7 @@ function priemgetallen() {
         }
     }
 }
-document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
+if(document.getElementById("priemgetallen-button")){
+    document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
+}
+
