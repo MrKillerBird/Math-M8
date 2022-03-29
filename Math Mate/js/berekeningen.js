@@ -85,7 +85,7 @@ if (document.getElementById("eo-button")) {
 
 
 
-let OERdebug = false;
+let OERdebug = true;
 let OERlive = false;
 let OERliveDelay = 1500;
 let OERbezig = false;
@@ -93,7 +93,8 @@ async function OverEngineered() { //Danny
     let input1 = document.getElementById("OE-input-1").value;
     let output = document.getElementById("OE-output");
 
-    let varX =  document.getElementById("OE-var-x").value;
+    let var1 = document.getElementById("OE-var-x").value;
+    let varNaam1 = "SWD1";
 
     output.innerHTML = "";
 
@@ -118,6 +119,29 @@ async function OverEngineered() { //Danny
             inputArray.splice(i, 1);
         }
     }
+    
+    let splitVarNaam1 = varNaam1.split("");
+    let naamVar1 = "";
+    let naamVars = 0;
+    let varGevonden = false;
+    for(let i = 0; i < inputArray.length; i++){
+        for(let varNaamIndex = 0; varNaamIndex < splitVarNaam1.length; varNaamIndex++){
+            if(inputArray[i + varNaamIndex] == splitVarNaam1[varNaamIndex]){
+                naamVar1 += inputArray[i + varNaamIndex];
+                if(varNaamIndex == splitVarNaam1.length-1){
+                    varGevonden = true; 
+                    naamVars++;
+                    output.innerHTML += naamVars + " " + naamVar1 + "<br>";
+                }
+            }else{naamVar1 = ""; break;}
+        }
+        if(varGevonden){
+            inputArray.splice(i, splitVarNaam1.length, naamVar1);
+            naamVar1 = "";
+            varGevonden = false;
+        }
+    }
+
 
     for (let i = 0; i < inputArray.length; i++) {
         switch (inputArray[i]) {
@@ -125,10 +149,13 @@ async function OverEngineered() { //Danny
                 bewerkingen[bewerkingen.length] = "+";
                 break;
             case "-":
-                if (isNaN(parseFloat(inputArray[i - 1])) && inputArray[i + 1] == "(") {
+                if (isNaN(parseFloat(inputArray[i - 1])) && inputArray[i + 1] == "(" && inputArray[i - 1] != ")") {
                     bewerkingen[bewerkingen.length] = "-(";;
-                    inputArray.splice(i, 1);
-                } else if (isNaN(parseFloat(inputArray[i - 1]))) {
+                    inputArray.splice(i, 2, "-(");
+                } else if (isNaN(parseFloat(inputArray[i - 1])) && inputArray[i + 1] == varNaam1 && inputArray[i - 1] != ")") {
+                    bewerkingen[bewerkingen.length] = "-(";;
+                    inputArray.splice(i, 1, "-(");
+                } else if (isNaN(parseFloat(inputArray[i - 1])) && inputArray[i - 1] != ")") {
                     inputArray[i + 1] = "-" + inputArray[i + 1];
                     inputArray.splice(i, 1);
                 } else {
@@ -160,17 +187,21 @@ async function OverEngineered() { //Danny
                 if (inputArray[i - 1] == ".") { SyntaxErr = true; }
                 inputArray[i] = ".";
                 break;
-            case "x":
-                if(!isNaN(parseFloat(inputArray[i-1]))){
-                    inputArray.splice(i-1,0,"(")
-                    bewerkingen[bewerkingen.length] = "*";
-                    inputArray[i] = "*";
-                    inputArray.splice(i+1,0,String(varX));
-                    inputArray.splice(i+1,0,")")
-                }else{
-                    inputArray.splice(i,0,"(")
-                    inputArray.splice(i,0,")")
-                    inputArray.splice(i-1,0,String(varX));
+            case varNaam1:
+                if (inputArray[i - 1] == "-(") {
+                    inputArray[i] = String(var1);
+                    inputArray.splice(i + 1, 0, ")");
+                } else if (!isNaN(parseFloat(inputArray[i - 1]))) {
+                    inputArray[i] = String(var1);
+                    bewerkingen[bewerkingen.length] = "(";
+                    inputArray.splice(i - 1, 0, "(");
+                    inputArray.splice(i + 1, 0, "*");
+                    inputArray.splice(i + 3, 0, ")");
+                } else {
+                    inputArray[i] = String(var1);
+                    bewerkingen[bewerkingen.length] = "(";
+                    inputArray.splice(i, 0, "(");
+                    inputArray.splice(i + 2, 0, ")");
                 }
                 break;
 
@@ -178,8 +209,9 @@ async function OverEngineered() { //Danny
                 if (isNaN(parseFloat(inputArray[i]))) { SyntaxErr = true; }
                 break;
         }
-        if (SyntaxErr) { output.innerHTML = "<strong>Syntax Error</strong>"; OERbezig = false; return; }
+        //if (SyntaxErr) { output.innerHTML = "<strong>Syntax Error</strong>"; OERbezig = false; return; }
     }
+    output.innerHTML += inputArray + "<br>";
     for (let i = 0; i < inputArray.length; i++) {
         if (isNaN(parseFloat(inputArray[i])) && inputArray[i] != ".") { inputArray[i] = ""; }
     }
@@ -320,7 +352,7 @@ async function OverEngineered() { //Danny
             }
         }
     }
-    //if (isNaN(getallen)) { output.innerHTML = "<strong>Math Error</strong>"; return; }
+
     let vorigOutput;
     let zelfdeOutput = 0;
     while (getallen.length > 1) {
@@ -328,10 +360,12 @@ async function OverEngineered() { //Danny
         if (getallen + ";" == vorigOutput) { zelfdeOutput++; } else { zelfdeOutput = 0 }
         if (zelfdeOutput == 2) { haakBegin = 0 }
         if (zelfdeOutput == 3) { output.innerHTML += "<br>" + "<strong>Error while calculating</strong>"; break; }
+
         else { vorigOutput = getallen + ";"; }
     }
 
     if (OERlive) { output.innerHTML = "[Antwoord]" + "<br>" + getallen.join(" ") + "<br>"; }
+    if (isNaN(getallen) || isNaN(parseFloat(getallen))) { output.innerHTML += "<br>" + "<strong>Math Error</strong>" + "<br>"; }
     else { output.innerHTML += "<br>" + getallen.join(" ") + "<br>"; }
 
     OERbezig = false;
