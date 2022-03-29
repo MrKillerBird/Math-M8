@@ -61,7 +61,7 @@ function simpel() { //Erik
             break;
     }
 }
-if(document.getElementById("simpel-button")){
+if (document.getElementById("simpel-button")) {
     document.getElementById("simpel-button").addEventListener("click", simpel);
 }
 
@@ -78,7 +78,7 @@ function eo() { //Erik
     }
 
 }
-if(document.getElementById("eo-button")){
+if (document.getElementById("eo-button")) {
     document.getElementById("eo-button").addEventListener("click", eo);
 }
 
@@ -92,6 +92,9 @@ let OERbezig = false;
 async function OverEngineered() { //Danny
     let input1 = document.getElementById("OE-input-1").value;
     let output = document.getElementById("OE-output");
+
+    let varX =  document.getElementById("OE-var-x").value;
+
     output.innerHTML = "";
 
 
@@ -157,12 +160,25 @@ async function OverEngineered() { //Danny
                 if (inputArray[i - 1] == ".") { SyntaxErr = true; }
                 inputArray[i] = ".";
                 break;
+            case "x":
+                if(!isNaN(parseFloat(inputArray[i-1]))){
+                    inputArray.splice(i-1,0,"(")
+                    bewerkingen[bewerkingen.length] = "*";
+                    inputArray[i] = "*";
+                    inputArray.splice(i+1,0,String(varX));
+                    inputArray.splice(i+1,0,")")
+                }else{
+                    inputArray.splice(i,0,"(")
+                    inputArray.splice(i,0,")")
+                    inputArray.splice(i-1,0,String(varX));
+                }
+                break;
 
             default:
                 if (isNaN(parseFloat(inputArray[i]))) { SyntaxErr = true; }
                 break;
         }
-        if (SyntaxErr) { output.innerHTML = "<strong>Syntax Error</strong>"; return; }
+        if (SyntaxErr) { output.innerHTML = "<strong>Syntax Error</strong>"; OERbezig = false; return; }
     }
     for (let i = 0; i < inputArray.length; i++) {
         if (isNaN(parseFloat(inputArray[i])) && inputArray[i] != ".") { inputArray[i] = ""; }
@@ -324,7 +340,7 @@ async function OverEngineered() { //Danny
     // 1+1-2+5-778+-40-110
     // ((5/3,1)7*2+0,4)^3+-((5(5,125+(6-20)))*2)^2--600%42,1
 }
-if(document.getElementById("OE-button")){
+if (document.getElementById("OE-button")) {
     document.getElementById("OE-button").addEventListener("click", function () {
         if (!OERbezig) { OverEngineered(); }
     });
@@ -350,7 +366,7 @@ function fibonacci() { //Danny
     }
     output.innerHTML = getallen.join(", ");
 }
-if(document.getElementById("fibonacci-button")){
+if (document.getElementById("fibonacci-button")) {
     document.getElementById("fibonacci-button").addEventListener("click", fibonacci);
 }
 
@@ -385,7 +401,7 @@ function factorizer() { //Danny
     }
     output.innerHTML = result;
 }
-if(document.getElementById("factorizer-button")){
+if (document.getElementById("factorizer-button")) {
     document.getElementById("factorizer-button").addEventListener("click", factorizer);
 }
 
@@ -400,7 +416,7 @@ function machten() { //Erik & Davey
         output.innerHTML += input1 + "^" + currentNumber + " = " + input1 ** currentNumber + "<br>";
     }
 }
-if(document.getElementById("machten-button")){
+if (document.getElementById("machten-button")) {
     document.getElementById("machten-button").addEventListener("click", machten);
 }
 
@@ -415,7 +431,7 @@ function tafels() { //Erik
         output.innerHTML += input1 + " * " + currentNumber + " = " + input1 * currentNumber + "<br>";
     }
 }
-if(document.getElementById("tafels-button")){
+if (document.getElementById("tafels-button")) {
     document.getElementById("tafels-button").addEventListener("click", tafels);
 }
 
@@ -430,7 +446,7 @@ function breuken() { //Erik
     }
 
 }
-if(document.getElementById("breuken-button")){
+if (document.getElementById("breuken-button")) {
     document.getElementById("breuken-button").addEventListener("click", breuken);
 }
 
@@ -445,7 +461,7 @@ function kwadraten() { //Erik
     }
 
 }
-if(document.getElementById("kwadraten-button")){
+if (document.getElementById("kwadraten-button")) {
     document.getElementById("kwadraten-button").addEventListener("click", kwadraten);
 }
 
@@ -459,21 +475,21 @@ function priemgetallen() {
     let getallen = [];
     let huidigGetal;
 
-    for(let i = 2; i <= input1; i++){ //zet alle nummers van 2 tot de max in een array
-        getallen[i-2] = i;
+    for (let i = 2; i <= input1; i++) { //zet alle nummers van 2 tot de max in een array
+        getallen.push(i);
     }
-    
-    for(let i = 0; i < getallen.length; i++){ //gaat door alle getallen in de array
+
+    for (let i = 0; i < getallen.length; i++) { //gaat door alle getallen in de array
         huidigGetal = getallen[i];
-        for(let i = 0; i < getallen.length; i++){
-            if(getallen[i] != huidigGetal && getallen[i] % huidigGetal == 0){ //kijkt of de getal in de array deelbaar is door het huidige getal en niet het huidige getal zelf is
-                getallen.splice(i,1); //haalt nummer in de array weg als de stelling hierboven waar is
+        for (let i = 0; i < getallen.length; i++) {
+            if (getallen[i] != huidigGetal && getallen[i] % huidigGetal == 0) { //kijkt of de getal in de array deelbaar is door het huidige getal en niet het huidige getal zelf is
+                getallen.splice(i, 1); //haalt nummer in de array weg als de stelling hierboven waar is
             }
         }
     }
     output.innerHTML = getallen.join(", ");
 }
-if(document.getElementById("priemgetallen-button")){
+if (document.getElementById("priemgetallen-button")) {
     document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
 }
 
