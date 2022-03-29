@@ -10,7 +10,7 @@
 
 main article {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
   justify-content: center;
   grid-row-gap: 20px;
+  padding: 3vh 0 3vh 0;
 }
