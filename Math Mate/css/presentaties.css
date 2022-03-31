@@ -1,0 +1,31 @@
+.gradient-header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.gradient-header span {
+  font-size: 30pt;
+}
+
+main {
+
+}
+
+.slideshow {
+ 
+}
+
+.slides {
+
+}
+
+.slide-nav {
+  display: flex;
+}
+
+.bar-point {
+  width: 50px;
+  height: 10px;
+  border: 2px solid white;
+}

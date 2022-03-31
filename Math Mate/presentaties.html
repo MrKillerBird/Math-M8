@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/master.css">
   <link rel="stylesheet" type="text/css" href="css/navigatie.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/presentaties.css">
   <script src="js/dropdown.js"></script>
   <script src="js/topnav.js"></script>
   <title>Math Mate</title>
@@ -22,7 +22,7 @@
 
     <section class="logo__header">
       <img class="logo__img" src="images/skelet-img/mathmatelogo.png">
-      <span class="logo__text">Math Mate</span>
+      <a href="index.html"><span class="logo__text">Math Mate</span></a>
     </section>
 
     <nav class="mPres">
@@ -89,33 +89,47 @@
   </header>
 
   <main>
-    <article>
-      <section class="Eenvbr-exp">
-        <h1>Eenvoudige berekeningen</h1>
-        <p>
+    <article class="slideshow">
+      <section class="slides">
+        <input type="radio" name="r" id="r1" checked>
+        <input type="radio" name="r" id="r2">
+        <input type="radio" name="r" id="r3">
+        <input type="radio" name="r" id="r4">
 
-        </p>
+        <article class="slide-1 slide">
+          <h1>Eenvoudige Berekeningen</h1>
+          <p>
+            uitleg
+          </p>
+        </article>
+
+        <article class="slide-2 slide">
+          <h1>Eenvoudige Reeksen</h1>
+          <p>
+            uitleg
+          </p>
+        </article>
+
+        <article class="slide-3 slide">
+          <h1>Complexe Reeksen</h1>
+          <p>
+            uitleg
+          </p>
+        </article>
+
+        <article class="slide-4 slide">
+          <h1>Omrekenen</h1>
+          <p>
+            uitleg
+          </p>
+        </article>
       </section>
 
-      <section class="Eenvrk-exp">
-        <h1>Eenvoudige reeksen</h1>
-        <p>
-
-        </p>
-      </section>
-
-      <section class="Complrk-exp">
-        <h1>Complexe reeksen</h1>
-        <p>
-
-        </p>
-      </section>
-
-      <section class="mOmrk-exp">
-        <h1>Omrekenen</h1>
-        <p>
-
-        </p>
+      <section class="slide-nav">
+        <label for="r1" class="bar-point"></label>
+        <label for="r2" class="bar-point"></label>
+        <label for="r3" class="bar-point"></label>
+        <label for="r4" class="bar-point"></label>
       </section>
     </article>
   </main>

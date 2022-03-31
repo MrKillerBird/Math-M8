@@ -57,6 +57,11 @@ picture {
   background-color: #101013;
 }
 
+.logo__header a {
+  text-decoration: none;
+  color: white;
+}
+
 @media screen and (max-width: 1150px) {
   .logo__header {
     width: calc(100vw - 70px);

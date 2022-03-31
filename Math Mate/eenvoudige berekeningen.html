@@ -22,7 +22,7 @@
 
     <section class="logo__header">
       <img class="logo__img" src="images/skelet-img/mathmatelogo.png">
-      <span class="logo__text">Math Mate</span>
+      <a href="index.html"><span class="logo__text">Math Mate</span></a>
     </section>
 
     <nav class="mEenvbr">
@@ -95,11 +95,28 @@
 
   <main>
     <article>
+      <section class="mEenvbr-beschrijving">
+        <h1>Uitleg</h1>
+        <p>
+          Bij eenvoudige berekeningen word er gebruik gemaakt van bewerkingssymbolen zoals:
+        </p>
+
+        <ul>
+          <li>+ voor optellen</li>
+          <li>- voor aftrekken</li>
+          <li>* voor vermenigvuldigen</li>
+          <li>/ voor delen</li>
+          <li>% voor percentages</li>
+          <li>^ voor machten</li>
+          <li>en simpelweg 'rest' voor restwaredes</li>
+        </ul>
+      </section>
+
       <section class="berekening">
   			<h1>Eenvoudige berekeningen</h1>
-  			<input id="simpel-input-1" type="number">
-  			<input id="simpel-input-bewerking" type="text">
-  			<input id="simpel-input-2" type="number">
+  			<input id="simpel-input-1" type="number" placeholder="getal 1">
+  			<input id="simpel-input-bewerking" type="text" placeholder="bewerkingssymbol">
+  			<input id="simpel-input-2" type="number" placeholder="getal 2">
   			<button id="simpel-button">Bereken</button>
   			<br>
   			<span id="simpel-output"></span>

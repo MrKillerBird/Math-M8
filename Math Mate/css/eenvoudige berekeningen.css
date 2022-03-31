@@ -14,3 +14,7 @@ main article {
   grid-row-gap: 20px;
   padding: 3vh 0 3vh 0;
 }
+
+main .mEenvbr-beschrijving li {
+  list-style-type: none;
+}
