@@ -542,7 +542,7 @@ if (document.getElementById("perfectnumber-button")) {
 }
 
 
-function factorizer() { //Danny
+async function factorizer() { //Danny
     let input1 = document.getElementById("factorizer-input-1").value;
     let output = document.getElementById("factorizer-output");
     output.innerHTML = "";
@@ -569,10 +569,21 @@ if (document.getElementById("factorizer-button")) {
     document.getElementById("factorizer-button").addEventListener("click", factorizer);
 }
 
+
+
+let morseBeeps = false;
+let morseBezig = false;
 function morsenizer() { //Danny
     let input1 = document.getElementById("morsenizer-input-1").value;
     let output = document.getElementById("morsenizer-output");
     output.innerHTML = "";
+
+    if (input1 == "#morseBeeps") { morseBeeps = !morseBeeps; output.innerHTML = "morse beeps: " + morseBeeps; return; }
+
+    let short_beep = new Audio('./sounds/morse_code_beep_short.ogg');
+    let long_beep = new Audio('./sounds/morse_code_beep_long.ogg');
+
+    morseBezig = true;
 
     let woorden = input1.split(" ");
     for (let i = 0; i < woorden.length; i++) {
@@ -692,6 +703,7 @@ function morsenizer() { //Danny
             case "9":
                 return "----.";
 
+
             case ".":
                 return ".-.-.-";
 
@@ -752,6 +764,29 @@ function morsenizer() { //Danny
         }
     }
 
+    async function playMorseBeeps(morse) {
+        await delay(1000);
+        morse = morse.split("")
+        for (let i = 0; i < morse.length; i++) {
+            switch (morse[i]) {
+                case ".":
+                    short_beep.play();
+                    await delay(200);
+                    break;
+
+                case "-":
+                    long_beep.play();
+                    await delay(400);
+                    break;
+
+                default:
+                    await delay(400);
+                    break;
+            }
+        }
+        morseBezig = false;
+    }
+
     for (let i = 0; i < woorden.length; i++) {
         let letters = woorden[i].split("");
         for (let i = 0; i < letters.length; i++) {
@@ -759,11 +794,14 @@ function morsenizer() { //Danny
         }
         woorden[i] = letters.join(" ");
     }
+    woorden = woorden.join(" / ");
 
-    output.innerHTML = woorden.join(" / ");
+    output.innerHTML = woorden;
+
+    if (morseBeeps) { playMorseBeeps(woorden); } else { morseBezig = false; }
 }
 if (document.getElementById("morsenizer-button")) {
-    document.getElementById("morsenizer-button").addEventListener("click", morsenizer);
+    document.getElementById("morsenizer-button").addEventListener("click", function () {
+        if (!morseBezig) { morsenizer(); }
+    });
 }
-
-
