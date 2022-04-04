@@ -12,20 +12,64 @@ main {
 
 }
 
+.slide img {
+  height: 500px;
+  width: 1000px;
+}
+
+.slide {
+  transition: 2s;
+}
+
 .slideshow {
- 
+  overflow: hidden;
+  height: 510px;
+  width: 1000px;
 }
 
 .slides {
-
+  display: flex;
+  align-items: center;
 }
 
 .slide-nav {
   display: flex;
+  justify-content: center;
+  transform: translateY(-30px);
+}
+
+.bar-point:not(:last-child){
+  margin-right: 3vw;
+}
+
+.bar-point:hover {
+  background-color: white;
+}
+
+.slides input {
+  display: none;
 }
 
 .bar-point {
   width: 50px;
   height: 10px;
   border: 2px solid white;
+  transition: 1s;
+  cursor: pointer;
+}
+
+#radio1:checked ~ .slide-1 {
+  margin-left: 0px;
+}
+
+#radio2:checked ~ .slide-1 {
+  margin-left: -1000px;
+}
+
+#radio3:checked ~ .slide-1 {
+  margin-left: -2000px;
+}
+
+#radio4:checked ~ .slide-1 {
+  margin-left: -3000px;
 }
