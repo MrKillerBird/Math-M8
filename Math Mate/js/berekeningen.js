@@ -119,23 +119,23 @@ async function OverEngineered() { //Danny
             inputArray.splice(i, 1);
         }
     }
-    
+
     let splitVarNaam1 = varNaam1.split("");
     let naamVar1 = "";
     let naamVars = 0;
     let varGevonden = false;
-    for(let i = 0; i < inputArray.length; i++){
-        for(let varNaamIndex = 0; varNaamIndex < splitVarNaam1.length; varNaamIndex++){
-            if(inputArray[i + varNaamIndex] == splitVarNaam1[varNaamIndex]){
+    for (let i = 0; i < inputArray.length; i++) {
+        for (let varNaamIndex = 0; varNaamIndex < splitVarNaam1.length; varNaamIndex++) {
+            if (inputArray[i + varNaamIndex] == splitVarNaam1[varNaamIndex]) {
                 naamVar1 += inputArray[i + varNaamIndex];
-                if(varNaamIndex == splitVarNaam1.length-1){
-                    varGevonden = true; 
+                if (varNaamIndex == splitVarNaam1.length - 1) {
+                    varGevonden = true;
                     naamVars++;
                     output.innerHTML += naamVars + " " + naamVar1 + "<br>";
                 }
-            }else{naamVar1 = ""; break;}
+            } else { naamVar1 = ""; break; }
         }
-        if(varGevonden){
+        if (varGevonden) {
             inputArray.splice(i, splitVarNaam1.length, naamVar1);
             naamVar1 = "";
             varGevonden = false;
@@ -209,7 +209,7 @@ async function OverEngineered() { //Danny
                 if (isNaN(parseFloat(inputArray[i]))) { SyntaxErr = true; }
                 break;
         }
-        //if (SyntaxErr) { output.innerHTML = "<strong>Syntax Error</strong>"; OERbezig = false; return; }
+        if (SyntaxErr) { output.innerHTML = "<strong>Syntax Error</strong>"; OERbezig = false; return; }
     }
     output.innerHTML += inputArray + "<br>";
     for (let i = 0; i < inputArray.length; i++) {
@@ -383,76 +383,6 @@ if (document.getElementById("OE-button")) {
 
 
 
-function fibonacci() { //Danny
-    let input1 = document.getElementById("fibonacci-input-1").value;
-    let output = document.getElementById("fibonacci-output");
-    output.innerHTML = "";
-
-    let getallen = [];
-
-    let b = 0,
-        temp;
-    for (let a = 1; a <= input1; a) {
-        getallen[getallen.length] = a;
-        temp = a;
-        a = a + b;
-        b = temp;
-    }
-    output.innerHTML = getallen.join(", ");
-}
-if (document.getElementById("fibonacci-button")) {
-    document.getElementById("fibonacci-button").addEventListener("click", fibonacci);
-}
-
-function factorizer() { //Danny
-    let input1 = document.getElementById("factorizer-input-1").value;
-    let output = document.getElementById("factorizer-output");
-    output.innerHTML = "";
-
-    let n = input1 * 1; // *1 maakt het een nummer
-    let divisor = 2;
-    let factors = [];
-    let result = "";
-
-    if (n > 1 && n % 1 == 0) {
-        while (n > 1) {
-            if (n % divisor == 0) {
-                factors.push(divisor);
-                n = n / divisor;
-            } else {
-                divisor++;
-            }
-        }
-
-        result = factors[0];
-
-        for (let i = 1; i <= factors.length - 1; i++) {
-            result += "*" + factors[i];
-        }
-
-    } else {
-        result = n;
-    }
-    output.innerHTML = result;
-}
-if (document.getElementById("factorizer-button")) {
-    document.getElementById("factorizer-button").addEventListener("click", factorizer);
-}
-
-
-function machten() { //Erik & Davey
-    let input1 = document.getElementById("machten-input-1").value * 1;
-    let input2 = document.getElementById("machten-input-2").value * 1;
-    let output = document.getElementById("machten-output");
-    output.innerHTML = "";
-
-    for (let currentNumber = 0; currentNumber <= input2; currentNumber++) {
-        output.innerHTML += input1 + "^" + currentNumber + " = " + input1 ** currentNumber + "<br>";
-    }
-}
-if (document.getElementById("machten-button")) {
-    document.getElementById("machten-button").addEventListener("click", machten);
-}
 
 
 function tafels() { //Erik
@@ -469,6 +399,19 @@ if (document.getElementById("tafels-button")) {
     document.getElementById("tafels-button").addEventListener("click", tafels);
 }
 
+function machten() { //Erik & Davey
+    let input1 = document.getElementById("machten-input-1").value * 1;
+    let input2 = document.getElementById("machten-input-2").value * 1;
+    let output = document.getElementById("machten-output");
+    output.innerHTML = "";
+
+    for (let currentNumber = 0; currentNumber <= input2; currentNumber++) {
+        output.innerHTML += input1 + "^" + currentNumber + " = " + input1 ** currentNumber + "<br>";
+    }
+}
+if (document.getElementById("machten-button")) {
+    document.getElementById("machten-button").addEventListener("click", machten);
+}
 
 function breuken() { //Erik
     let input1 = document.getElementById("breuken-input-1").value * 1;
@@ -478,12 +421,10 @@ function breuken() { //Erik
     for (let currentNumber = 1; currentNumber <= input1; currentNumber++) {
         output.innerHTML += '1/' + currentNumber + " = " + 1 / currentNumber + "<br>";
     }
-
 }
 if (document.getElementById("breuken-button")) {
     document.getElementById("breuken-button").addEventListener("click", breuken);
 }
-
 
 function kwadraten() { //Erik
     let input1 = document.getElementById("kwadraten-input-1").value * 1;
@@ -501,7 +442,26 @@ if (document.getElementById("kwadraten-button")) {
 
 
 
-function priemgetallen() {
+function fibonacci() { //Danny
+    let input1 = document.getElementById("fibonacci-input-1").value;
+    let output = document.getElementById("fibonacci-output");
+    output.innerHTML = "";
+
+    let b = 0;
+    let temp;
+
+    for (let a = 1; a <= input1; a) {
+        output.innerHTML += a + "<br>";
+        temp = a;
+        a = a + b;
+        b = temp;
+    }
+}
+if (document.getElementById("fibonacci-button")) {
+    document.getElementById("fibonacci-button").addEventListener("click", fibonacci);
+}
+
+function priemgetallen() { //Danny
     let input1 = document.getElementById("priemgetallen-input-1").value;
     let output = document.getElementById("priemgetallen-output");
     output.innerHTML = "";
@@ -521,9 +481,327 @@ function priemgetallen() {
             }
         }
     }
-    output.innerHTML = getallen.join(", ");
+    output.innerHTML = getallen.join("<br>");
 }
 if (document.getElementById("priemgetallen-button")) {
     document.getElementById("priemgetallen-button").addEventListener("click", priemgetallen);
 }
 
+function collatz() { //Danny
+    let input1 = document.getElementById("collatz-input-1").value;
+    let output = document.getElementById("collatz-output");
+    output.innerHTML = "";
+
+    let getal = input1;
+
+    while (getal > 1) {
+        output.innerHTML += getal;
+        if (getal % 2 == 0) {
+            getal = getal / 2;
+            output.innerHTML += " / 2 = " + getal + "<br>";
+        } else {
+            getal = getal * 3 + 1;
+            output.innerHTML += " * 3 + 1 = " + getal + "<br>";
+        }
+    }
+}
+if (document.getElementById("collatz-button")) {
+    document.getElementById("collatz-button").addEventListener("click", collatz);
+}
+
+function perfectNumber() { //Danny
+    let input1 = document.getElementById("perfectnumber-input-1").value;
+    let output = document.getElementById("perfectnumber-output");
+    output.innerHTML = "";
+
+    let getallen = [];
+    let getal = input1;
+    let temp = 0;
+    let optelling = 0;
+    let direct = "";
+
+    for (let i = 1; i <= getal / 2 && optelling < getal; i++, console.log(i + " banaan")) {
+        if (getal % i == 0) {
+            temp += 1;
+            optelling += i;
+            getallen.push(i);
+            if (getallen[getallen.length - 2] * i == getal) { direct = getallen[getallen.length - 2] + " * " + i + " = " + getal; }
+        }
+    }
+
+    if (optelling == getal && optelling != 0) {
+        output.innerHTML =
+            getallen.join(" + ") + " = " + getal + "<br>"
+            + "Directe berekening: " + direct;
+    } else {
+        output.innerHTML = "Getal is niet perfect";
+    }
+}
+if (document.getElementById("perfectnumber-button")) {
+    document.getElementById("perfectnumber-button").addEventListener("click", perfectNumber);
+}
+
+
+async function factorizer() { //Danny
+    let input1 = document.getElementById("factorizer-input-1").value;
+    let output = document.getElementById("factorizer-output");
+    output.innerHTML = "";
+
+    let n = input1; // *1 maakt het een nummer
+    let divisor = 2;
+    let factors = [];
+
+    if (n > 1 && n % 1 == 0) {
+        while (n > 1) {
+            if (n % divisor == 0) {
+                factors.push(divisor);
+                n = n / divisor;
+            } else {
+                divisor++;
+            }
+        }
+        output.innerHTML = factors.join(" * ") + " = " + input1;
+    } else {
+        output.innerHTML = input1;
+    }
+}
+if (document.getElementById("factorizer-button")) {
+    document.getElementById("factorizer-button").addEventListener("click", factorizer);
+}
+
+
+
+let morseBeeps = false;
+let morseBezig = false;
+function morsenizer() { //Danny
+    let input1 = document.getElementById("morsenizer-input-1").value;
+    let output = document.getElementById("morsenizer-output");
+    output.innerHTML = "";
+
+    if (input1 == "#morseBeeps") { morseBeeps = !morseBeeps; output.innerHTML = "morse beeps: " + morseBeeps; return; }
+
+    let short_beep = new Audio('./sounds/morse_code_beep_short.ogg');
+    let long_beep = new Audio('./sounds/morse_code_beep_long.ogg');
+
+    morseBezig = true;
+
+    let woorden = input1.split(" ");
+    for (let i = 0; i < woorden.length; i++) {
+        while (woorden[i] == "") {
+            woorden.splice(i, 1);
+        }
+    }
+
+    function morseEncode(letter) {
+        switch (letter) {
+            case "A": case "a":
+                return ".-";
+
+            case "B": case "b":
+                return "-..";
+
+            case "C": case "c":
+                return "-.-.";
+
+            case "D": case "d":
+                return "-..";
+
+            case "E": case "e":
+                return ".";
+
+            case "F": case "f":
+                return "..-.";
+
+            case "G": case "g":
+                return "--.";
+
+            case "H": case "h":
+                return "....";
+
+            case "I": case "i":
+                return "..";
+
+            case "J": case "j":
+                return ".---";
+
+            case "K": case "k":
+                return "-.-";
+
+            case "L": case "l":
+                return ".-..";
+
+            case "M": case "m":
+                return "--";
+
+            case "N": case "n":
+                return "-.";
+
+            case "O": case "o":
+                return "---";
+
+            case "P": case "p":
+                return ".--.";
+
+            case "Q": case "q":
+                return "--.-";
+
+            case "R": case "r":
+                return ".-.";
+
+            case "S": case "s":
+                return "...";
+
+            case "T": case "t":
+                return "-";
+
+            case "U": case "u":
+                return "..-";
+
+            case "V": case "v":
+                return "...-";
+
+            case "W": case "w":
+                return ".--";
+
+            case "X": case "x":
+                return "-..-";
+
+            case "Y": case "y":
+                return "-.--";
+
+            case "Z": case "z":
+                return "--..";
+
+
+            case "0":
+                return "-----";
+
+            case "1":
+                return ".----";
+
+            case "2":
+                return "..---";
+
+            case "3":
+                return "...--";
+
+            case "4":
+                return "....-";
+
+            case "5":
+                return ".....";
+
+            case "6":
+                return "-....";
+
+            case "7":
+                return "--...";
+
+            case "8":
+                return "---..";
+
+            case "9":
+                return "----.";
+
+
+            case ".":
+                return ".-.-.-";
+
+            case ",":
+                return "--..--";
+
+            case "?":
+                return "..--..";
+
+            case "'":
+                return ".----.";
+
+            case "!":
+                return "-.-.--";
+
+            case "/":
+                return "-..-.";
+
+            case "(":
+                return "-.--.";
+
+            case ")":
+                return "-.--.-";
+
+            case "&":
+                return ".-...";
+
+            case ":":
+                return "---...";
+
+            case ";":
+                return "-.-.-.";
+
+            case "=":
+                return "-...-";
+
+            case "+":
+                return ".-.-.";
+
+            case "-":
+                return "-....-";
+
+            case "_":
+                return "..--.-";
+
+            case '"':
+                return ".-..-.";
+
+            case "$":
+                return "...-..-";
+
+            case "@":
+                return ".--.-.";
+
+
+            default:
+                return "?";
+        }
+    }
+
+    async function playMorseBeeps(morse) {
+        await delay(1000);
+        morse = morse.split("")
+        for (let i = 0; i < morse.length; i++) {
+            switch (morse[i]) {
+                case ".":
+                    short_beep.play();
+                    await delay(200);
+                    break;
+
+                case "-":
+                    long_beep.play();
+                    await delay(400);
+                    break;
+
+                default:
+                    await delay(400);
+                    break;
+            }
+        }
+        morseBezig = false;
+    }
+
+    for (let i = 0; i < woorden.length; i++) {
+        let letters = woorden[i].split("");
+        for (let i = 0; i < letters.length; i++) {
+            letters[i] = morseEncode(letters[i]);
+        }
+        woorden[i] = letters.join(" ");
+    }
+    woorden = woorden.join(" / ");
+
+    output.innerHTML = woorden;
+
+    if (morseBeeps) { playMorseBeeps(woorden); } else { morseBezig = false; }
+}
+if (document.getElementById("morsenizer-button")) {
+    document.getElementById("morsenizer-button").addEventListener("click", function () {
+        if (!morseBezig) { morsenizer(); }
+    });
+}
