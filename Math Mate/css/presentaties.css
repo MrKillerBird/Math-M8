@@ -9,7 +9,8 @@
 }
 
 main {
-
+   justify-content: center;
+   align-items: center;
 }
 
 .slide img {
@@ -23,7 +24,7 @@ main {
 
 .slideshow {
   overflow: hidden;
-  height: 510px;
+  height: 500px;
   width: 1000px;
 }
 

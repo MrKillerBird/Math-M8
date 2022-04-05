@@ -12,7 +12,6 @@
   <link rel="stylesheet" type="text/css" href="css/master.css">
   <link rel="stylesheet" type="text/css" href="css/navigatie.css">
   <link rel="stylesheet" type="text/css" href="css/complexe reeksen.css">
-  <script src="js/dropdown.js"></script>
   <script src="js/topnav.js"></script>
   <title>Math Mate</title>
 </head>
@@ -27,52 +26,25 @@
 
     <nav class="mComplrk">
       <ul class="topnav" id="myTopnav">
+
         <li class="mPres">
           <a href="presentaties.html">Presentaties</a>
         </li>
 
-        <li class="dropdown mEenvbr">
-          <a href="eenvoudige berekeningen.html" class="dropdown-button" onClick="showSubmenu(1)">Eenvoudige Berekeningen &#x25BE;</a>
-        	<section class="dropdown-content" id="myDropdown1">
-            <a class="hover" href="eenvoudige berekeningen.html">Optellen</a>
-            <a class="hover" href="eenvoudige berekeningen.html">Aftrekken</a>
-        		<a class="hover" href="eenvoudige berekeningen.html">Vermenigvuldigen</a>
-            <a class="hover" href="eenvoudige berekeningen.html">Delen</a>
-            <a class="hover" href="eenvoudige berekeningen.html">Machtsverheffen</a>
-            <a class="hover" href="eenvoudige berekeningen.html">Percentage</a>
-            <a class="hover" href="eenvoudige berekeningen.html">Restwaarde</a>
-            <a class="hover" href="eenvoudige berekeningen.html">Even of Oneven</a>
-        	</section>
+        <li class="mEenvbr">
+          <a href="eenvoudige berekeningen.html">Eenvoudige Berekeningen</a>
         </li>
 
-        <li class="dropdown mEenvrk">
-          <a href="eenvoudige reeksen.html" class="dropdown-button" onClick="showSubmenu(2)">Eenvoudige Reeksen &#x25BE;</a>
-        	<section class="dropdown-content" id="myDropdown2">
-            <a class="hover" href="eenvoudige reeksen.html">Tafels</a>
-            <a class="hover" href="eenvoudige reeksen.html">Machten</a>
-        		<a class="hover" href="eenvoudige reeksen.html">Breuken</a>
-            <a class="hover" href="eenvoudige reeksen.html">Kwadraten</a>
-        	</section>
+        <li class="mEenvrk">
+          <a href="eenvoudige reeksen.html">Eenvoudige Reeksen</a>
         </li>
 
-        <li class="dropdown mComplrk">
-          <a href="complexe reeksen.html" class="dropdown-button" onClick="showSubmenu(3)">Complexe Reeksen &#x25BE;</a>
-        	<section class="dropdown-content" id="myDropdown3">
-            <a class="hover" href="complexe reeksen.html">Fibonacci</a>
-            <a class="hover" href="complexe reeksen.html">Priemgetallen</a>
-        		<a class="hover" href="complexe reeksen.html">Collatz Conjucture</a>
-            <a class="hover" href="complexe reeksen.html">Perfect Number</a>
-        	</section>
+        <li class="mComplrk">
+          <a href="complexe reeksen.html">Complexe Reeksen</a>
         </li>
 
-        <li class="dropdown mOmrk">
-          <a href="omrekenen.html" class="dropdown-button" onClick="showSubmenu(4)">Omrekenen &#x25BE;</a>
-        	<section class="dropdown-content" id="myDropdown4">
-            <a class="hover" href="omrekenen.html">Talstelsels</a>
-            <a class="hover" href="omrekenen.html">Factorizer</a>
-        		<a class="hover" href="omrekenen.html">Romanizer</a>
-            <a class="hover" href="omrekenen.html">Morsenizer</a>
-        	</section>
+        <li class="mOmrk">
+          <a href="omrekenen.html">Omrekenen</a>
         </li>
 
         <li class="burger-icon">
@@ -81,11 +53,6 @@
 
       </ul>
     </nav>
-
-    <!-- <section class="logo__header">
-      <img class="logo__img" src="images/mathmatelogo.png">
-      <span class="logo__text">Math Mate</span>
-    </section> -->
 
     <section class="gradient-header">
       <span>Complexe Reeksen</span>
@@ -100,7 +67,7 @@
   			<input id="fibonacci-input-1" type="number">
   			<span>Fibonacci getallen tot</span>
   			<br>
-  			<button id="fibonacci-button">Bereken</button>
+  			<button id="fibonacci-button">Berekenen</button>
   			<br>
   			<span id="fibonacci-output"></span>
   		</section>
@@ -110,7 +77,7 @@
   			<input id="priemgetallen-input-1" type="number">
   			<span>Priem getallen tot</span>
   			<br>
-  			<button id="priemgetallen-button">Bereken</button>
+  			<button id="priemgetallen-button">Berekenen</button>
   			<br>
   			<span id="priemgetallen-output"></span>
   		</section>
@@ -120,7 +87,7 @@
   			<input id="collatz-input-1" type="number">
   			<span>Begin getal voor collatz</span>
   			<br>
-  			<button id="collatz-button">Bereken</button>
+  			<button id="collatz-button">Berekenen</button>
   			<br>
   			<span id="collatz-output"></span>
   		</section>
@@ -130,7 +97,7 @@
   			<input id="perfectnumber-input-1" type="number">
   			<span>Controle getal</span>
   			<br>
-  			<button id="perfectnumber-button">Bereken</button>
+  			<button id="perfectnumber-button">Berekenen</button>
   			<br>
   			<span id="perfectnumber-output"></span>
   		</section>
