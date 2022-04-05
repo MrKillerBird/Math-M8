@@ -520,7 +520,7 @@ function perfectNumber() { //Danny
     let optelling = 0;
     let direct = "";
 
-    for (let i = 1; i <= getal / 2 && optelling < getal; i++, console.log(i + " banaan")) {
+    for (let i = 1; i <= getal / 2 && optelling < getal; i++) {
         if (getal % i == 0) {
             temp += 1;
             optelling += i;
@@ -541,15 +541,22 @@ if (document.getElementById("perfectnumber-button")) {
     document.getElementById("perfectnumber-button").addEventListener("click", perfectNumber);
 }
 
-
-async function factorizer() { //Danny
+// max 96210000000000000000000
+// max 9620000000000000000000
+function factorizer() { //Danny
     let input1 = document.getElementById("factorizer-input-1").value;
     let output = document.getElementById("factorizer-output");
     output.innerHTML = "";
 
-    let n = input1; // *1 maakt het een nummer
+    let n = input1;
     let divisor = 2;
     let factors = [];
+
+    let max = 962100000000000 * 10000000;
+    if(n > max && input1 != ""){
+            output.innerHTML += "<strong>Getal te groot</strong>";
+            return;
+        }
 
     if (n > 1 && n % 1 == 0) {
         while (n > 1) {
@@ -565,13 +572,81 @@ async function factorizer() { //Danny
         output.innerHTML = input1;
     }
 }
-if (document.getElementById("factorizer-button")) {
-    document.getElementById("factorizer-button").addEventListener("click", factorizer);
+if (document.getElementById("factorizer-input-1")) {
+    document.getElementById("factorizer-input-1").addEventListener("input", factorizer);
 }
 
+function romanizer() { //Danny
+    let input1 = document.getElementById("romanizer-input-1").value;
+    let output = document.getElementById("romanizer-output");
+    output.innerHTML = "";
 
+    let getal = input1;
+    let getal2 = 0;
+    let getal3 = 0;
 
-let morseBeeps = false;
+    if((getal < 1 || getal > 4999) && input1 != ""){
+        output.innerHTML += "<strong>Getal moet groter dan 0 en kleiner dan 5000 zijn</strong>";
+        return;
+    }
+
+    getal = getal % 1000;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "M".repeat(getal2/1000);
+
+    getal = getal % 900;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "CM".repeat(getal2/900);
+
+    getal = getal % 500;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "D".repeat(getal2/500);
+
+    getal = getal % 400;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "CD".repeat(getal2/400);
+
+    getal = getal % 100;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "C".repeat(getal2/100);
+
+    getal = getal % 90;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "XC".repeat(getal2/90);
+
+    getal = getal % 50;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "L".repeat(getal2/50);
+
+    getal = getal % 40;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "XL".repeat(getal2/40);
+
+    getal = getal % 10;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "X".repeat(getal2/10);
+
+    getal = getal % 9;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "IX".repeat(getal2/9);
+
+    getal = getal % 5;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "V".repeat(getal2/5);
+
+    getal = getal % 4;
+    getal2 = (input1 - getal - getal3); getal3 += getal2;
+    output.innerHTML += "IV".repeat(getal2/4);
+
+    getal = getal % 1;
+    getal2 = (input1 - getal - getal3);
+    output.innerHTML += "I".repeat(getal2/1);
+}
+if (document.getElementById("romanizer-input-1")) {
+    document.getElementById("romanizer-input-1").addEventListener("input", romanizer);
+}
+
+let morseBeeps = true;
 let morseBezig = false;
 function morsenizer() { //Danny
     let input1 = document.getElementById("morsenizer-input-1").value;
@@ -771,16 +846,19 @@ function morsenizer() { //Danny
             switch (morse[i]) {
                 case ".":
                     short_beep.play();
-                    await delay(200);
+                    output.innerHTML += ".";
+                    await delay(150);
                     break;
 
                 case "-":
                     long_beep.play();
-                    await delay(400);
+                    output.innerHTML += "-";
+                    await delay(450);
                     break;
 
                 default:
-                    await delay(400);
+                    output.innerHTML += " ";
+                    await delay(450);
                     break;
             }
         }
@@ -796,7 +874,7 @@ function morsenizer() { //Danny
     }
     woorden = woorden.join(" / ");
 
-    output.innerHTML = woorden;
+    output.innerHTML = woorden + "<br>";
 
     if (morseBeeps) { playMorseBeeps(woorden); } else { morseBezig = false; }
 }
