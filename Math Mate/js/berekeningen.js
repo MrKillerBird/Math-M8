@@ -85,7 +85,7 @@ if (document.getElementById("eo-button")) {
 
 
 
-let OERdebug = true;
+let OERdebug = false;
 let OERlive = false;
 let OERliveDelay = 1500;
 let OERbezig = false;
@@ -94,7 +94,7 @@ async function OverEngineered() { //Danny
     let output = document.getElementById("OE-output");
 
     let var1 = document.getElementById("OE-var-x").value;
-    let varNaam1 = "SWD1";
+    let varNaam1 = "x";
 
     output.innerHTML = "";
 
@@ -131,7 +131,7 @@ async function OverEngineered() { //Danny
                 if (varNaamIndex == splitVarNaam1.length - 1) {
                     varGevonden = true;
                     naamVars++;
-                    output.innerHTML += naamVars + " " + naamVar1 + "<br>";
+                    if (OERdebug) { output.innerHTML += naamVars + " " + naamVar1 + "<br>"; }
                 }
             } else { naamVar1 = ""; break; }
         }
@@ -211,7 +211,7 @@ async function OverEngineered() { //Danny
         }
         if (SyntaxErr) { output.innerHTML = "<strong>Syntax Error</strong>"; OERbezig = false; return; }
     }
-    output.innerHTML += inputArray + "<br>";
+    if (OERdebug) { output.innerHTML += inputArray + "<br>"; }
     for (let i = 0; i < inputArray.length; i++) {
         if (isNaN(parseFloat(inputArray[i])) && inputArray[i] != ".") { inputArray[i] = ""; }
     }
@@ -516,13 +516,11 @@ function perfectNumber() { //Danny
 
     let getallen = [];
     let getal = input1;
-    let temp = 0;
     let optelling = 0;
     let direct = "";
 
     for (let i = 1; i <= getal / 2 && optelling < getal; i++) {
         if (getal % i == 0) {
-            temp += 1;
             optelling += i;
             getallen.push(i);
             if (getallen[getallen.length - 2] * i == getal) { direct = getallen[getallen.length - 2] + " * " + i + " = " + getal; }
@@ -541,8 +539,60 @@ if (document.getElementById("perfectnumber-button")) {
     document.getElementById("perfectnumber-button").addEventListener("click", perfectNumber);
 }
 
-// max 96210000000000000000000
-// max 9620000000000000000000
+function talstelsel() { //Danny
+    let input1 = document.getElementById("talstelsel-input-1").value;
+    let input2 = document.getElementById("talstelsel-input-2").value;
+    let input3 = document.getElementById("talstelsel-input-3").value;
+    let output = document.getElementById("talstelsel-output");
+    output.innerHTML = "";
+
+    let numConvert = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+    function decimalTo(base, num) {
+        if (base < 2 || num == "Error") { return "Error"; }
+        let getal = 0;
+        let getal2 = num;
+        let getallen = [];
+
+        while (getal2 > 0) {
+            if (isNaN(getal2)) { return "Error"; }
+            getal = getal2;
+            getal = getal % base;
+            getal2 = (getal2 - getal) / base;
+            getallen.unshift(numConvert[getal]);
+        }
+        return getallen.join("");
+    }
+
+    function toDecimalFrom(base, num) {
+        if (base < 2) { return "Error"; }
+        let getal = num.split("");
+        let getal2 = 0;
+        let convertedNum = 0;
+
+        for (let i = 0; i < getal.length; i++) {
+            convertedNum = numConvert.indexOf(getal[getal.length - i - 1]);
+            if (convertedNum >= base || convertedNum < 0) { return "Error"; }
+            getal2 += convertedNum * base ** i;
+        }
+        return getal2;
+    }
+
+    let getal = decimalTo(input2, toDecimalFrom(input1, input3));
+
+    if (getal == "Error") {
+        output.innerHTML = "<strong>Error</strong>";
+    } else {
+        output.innerHTML = getal;
+    }
+}
+if (document.getElementById("talstelsel-button")) {
+    document.getElementById("talstelsel-button").addEventListener("click", talstelsel);
+}
+
+
+
+let factorizerBezig = false;
 function factorizer() { //Danny
     let input1 = document.getElementById("factorizer-input-1").value;
     let output = document.getElementById("factorizer-output");
@@ -552,11 +602,13 @@ function factorizer() { //Danny
     let divisor = 2;
     let factors = [];
 
-    let max = 962100000000000 * 10000000;
-    if(n > max && input1 != ""){
-            output.innerHTML += "<strong>Getal te groot</strong>";
-            return;
-        }
+    let max = 9999999;
+    if (n > max && input1 != "") {
+        output.innerHTML += "<strong>Getal te groot</strong>";
+        return;
+    }
+
+    factorizerBezig = true;
 
     if (n > 1 && n % 1 == 0) {
         while (n > 1) {
@@ -571,9 +623,12 @@ function factorizer() { //Danny
     } else {
         output.innerHTML = input1;
     }
+    factorizerBezig = false;
 }
 if (document.getElementById("factorizer-input-1")) {
-    document.getElementById("factorizer-input-1").addEventListener("input", factorizer);
+    document.getElementById("factorizer-input-1").addEventListener("input", function () {
+        if (!factorizerBezig) { factorizer(); }
+    });
 }
 
 function romanizer() { //Danny
@@ -585,68 +640,68 @@ function romanizer() { //Danny
     let getal2 = 0;
     let getal3 = 0;
 
-    if((getal < 1 || getal > 4999) && input1 != ""){
+    if ((getal < 1 || getal > 4999) && input1 != "") {
         output.innerHTML += "<strong>Getal moet groter dan 0 en kleiner dan 5000 zijn</strong>";
         return;
     }
 
     getal = getal % 1000;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "M".repeat(getal2/1000);
+    output.innerHTML += "M".repeat(getal2 / 1000);
 
     getal = getal % 900;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "CM".repeat(getal2/900);
+    output.innerHTML += "CM".repeat(getal2 / 900);
 
     getal = getal % 500;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "D".repeat(getal2/500);
+    output.innerHTML += "D".repeat(getal2 / 500);
 
     getal = getal % 400;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "CD".repeat(getal2/400);
+    output.innerHTML += "CD".repeat(getal2 / 400);
 
     getal = getal % 100;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "C".repeat(getal2/100);
+    output.innerHTML += "C".repeat(getal2 / 100);
 
     getal = getal % 90;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "XC".repeat(getal2/90);
+    output.innerHTML += "XC".repeat(getal2 / 90);
 
     getal = getal % 50;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "L".repeat(getal2/50);
+    output.innerHTML += "L".repeat(getal2 / 50);
 
     getal = getal % 40;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "XL".repeat(getal2/40);
+    output.innerHTML += "XL".repeat(getal2 / 40);
 
     getal = getal % 10;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "X".repeat(getal2/10);
+    output.innerHTML += "X".repeat(getal2 / 10);
 
     getal = getal % 9;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "IX".repeat(getal2/9);
+    output.innerHTML += "IX".repeat(getal2 / 9);
 
     getal = getal % 5;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "V".repeat(getal2/5);
+    output.innerHTML += "V".repeat(getal2 / 5);
 
     getal = getal % 4;
     getal2 = (input1 - getal - getal3); getal3 += getal2;
-    output.innerHTML += "IV".repeat(getal2/4);
+    output.innerHTML += "IV".repeat(getal2 / 4);
 
     getal = getal % 1;
     getal2 = (input1 - getal - getal3);
-    output.innerHTML += "I".repeat(getal2/1);
+    output.innerHTML += "I".repeat(getal2 / 1);
 }
 if (document.getElementById("romanizer-input-1")) {
     document.getElementById("romanizer-input-1").addEventListener("input", romanizer);
 }
 
-let morseBeeps = true;
+let morseBeeps = false;
 let morseBezig = false;
 function morsenizer() { //Danny
     let input1 = document.getElementById("morsenizer-input-1").value;
