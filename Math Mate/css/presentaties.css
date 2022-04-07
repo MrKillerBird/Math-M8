@@ -9,8 +9,9 @@
 }
 
 main {
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slide img {
@@ -18,8 +19,26 @@ main {
   width: 1000px;
 }
 
+.slide section {
+  background-color: gray;
+  height: 500px;
+  width: 1000px;
+  padding: 3rem;
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
 .slide {
   transition: 2s;
+  display: flex;
 }
 
 .slideshow {
@@ -36,7 +55,7 @@ main {
 .slide-nav {
   display: flex;
   justify-content: center;
-  transform: translateY(-30px);
+  transform: translateY(-40px);
 }
 
 .bar-point:not(:last-child){
@@ -53,8 +72,9 @@ main {
 
 .bar-point {
   width: 50px;
-  height: 10px;
+  height: 20px;
   border: 2px solid white;
+  border-radius: 3px;
   transition: 1s;
   cursor: pointer;
 }

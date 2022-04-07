@@ -104,3 +104,8 @@ main {
 .container-footer__row:nth-child(2) > span:nth-child(1) {
   padding-right: 4rem;
 }
+
+.container-footer__row:nth-child(2) > span a{
+  text-decoration: none;
+  color: white;
+}
