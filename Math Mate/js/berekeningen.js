@@ -549,7 +549,7 @@ function talstelsel() { //Danny
     let numConvert = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
     function decimalTo(base, num) {
-        if (base < 2 || num == "Error") { return "Error"; }
+        if (base < 2 || base > 36 || num == "Error") { return "Error"; }
         let getal = 0;
         let getal2 = num;
         let getallen = [];
@@ -565,7 +565,7 @@ function talstelsel() { //Danny
     }
 
     function toDecimalFrom(base, num) {
-        if (base < 2) { return "Error"; }
+        if (base < 2 || base > 36 || num == "Error") { return "Error"; }
         let getal = num.split("");
         let getal2 = 0;
         let convertedNum = 0;
@@ -578,12 +578,17 @@ function talstelsel() { //Danny
         return getal2;
     }
 
+    if (input3 > 999999999999999) {
+        output.innerHTML = "<strong>Javascript maximum bereikt</strong>";
+        return;
+    }
+
     let getal = decimalTo(input2, toDecimalFrom(input1, input3));
 
     if (getal == "Error") {
         output.innerHTML = "<strong>Error</strong>";
     } else {
-        output.innerHTML = getal;
+        output.innerHTML += "<br>" + getal;
     }
 }
 if (document.getElementById("talstelsel-button")) {
