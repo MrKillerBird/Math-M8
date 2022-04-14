@@ -43,7 +43,8 @@ nav.mPres li.mPres,
 nav.mEenvbr li.mEenvbr,
 nav.mEenvrk li.mEenvrk,
 nav.mComplrk li.mComplrk,
-nav.mOmrk li.mOmrk {
+nav.mOmrk li.mOmrk,
+nav.mRek li.mRek {
   color: #000000;
 	background-color: #13BDEC;
 }
@@ -56,7 +57,7 @@ ul.topnav li.burger-icon {
 	display: none;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1210px) {
   ul.topnav li {
 		display: none;
 	}
@@ -67,7 +68,7 @@ ul.topnav li.burger-icon {
   }
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1210px) {
   ul.topnav.responsive {
 		position: relative;
 		display: inline-block;
