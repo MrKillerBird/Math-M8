@@ -114,8 +114,7 @@ pre {
 }
 
 .background1 {
-  background: rgba(189, 248, 255, 0.6);
-  /* background: rgba(145, 201, 243, 0.6); */
+  background: rgba(145, 201, 243, 0.6);
   background-image: url("../images/presentaties/background1-plant.jpg");
   background-size: cover;
   background-blend-mode: overlay;
@@ -129,7 +128,6 @@ pre {
 }
 
 .background3 {
-  /* background: rgba(178, 218, 249, 0.6); */
   background: rgba(145, 201, 243, 0.6);
   background-image: url("../images/presentaties/background3-plant.jpg");
   background-size: cover;
@@ -144,9 +142,15 @@ pre {
 }
 
 .background5 {
-  /* background: rgba(178, 218, 249, 0.6); */
   background: rgba(145, 201, 243, 0.6);
   background-image: url("../images/presentaties/background5-plant.jpg");
+  background-size: cover;
+  background-blend-mode: overlay;
+}
+
+.background6 {
+  background: rgba(145, 201, 243, 0.6);
+  background-image: url("../images/presentaties/background6-plant.jpg");
   background-size: cover;
   background-blend-mode: overlay;
 }

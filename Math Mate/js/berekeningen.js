@@ -86,7 +86,7 @@ if (document.getElementById("eo-button")) {
 
 
 let OERdebug = false;
-let OERlive = false;
+let OERlive = true;
 let OERliveDelay = 1500;
 let OERbezig = false;
 async function OverEngineered() { //Danny
@@ -94,7 +94,7 @@ async function OverEngineered() { //Danny
     let output = document.getElementById("OE-output");
 
     let var1 = document.getElementById("OE-var-x").value;
-    let varNaam1 = "x";
+    let varNaam1 = "SWD1";
 
     output.innerHTML = "";
 
