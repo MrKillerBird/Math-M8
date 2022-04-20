@@ -84,10 +84,11 @@ if (document.getElementById("eo-button")) {
 
 
 
-
-let OERdebug = false;
-let OERlive = false;
-let OERliveDelay = 1500;
+// Over-Engineered Rekenmachine instellingen 
+let OERdebug = false; //wat debug info in output
+let OERlive = false; //laat berekening live zien met delay (dit kan in de code aangezet worden als default of in de input door middel van "OERlive" te typen en op berekenen te drukkken)
+let OERliveDelay = 1500; //delay tussen berekeningen in ms
+/* ----------------------- */
 let OERbezig = false;
 async function OverEngineered() { //Danny
     let input1 = document.getElementById("OE-input-1").value;
@@ -706,7 +707,11 @@ if (document.getElementById("romanizer-input-1")) {
     document.getElementById("romanizer-input-1").addEventListener("input", romanizer);
 }
 
-let morseBeeps = false;
+
+
+// morsenizer instellingen
+let morseBeeps = false; //laat toontjes klinken, kan in code aangezet worden als default of in de input door middel van "#morseBeeps" te typen en op berekenen te drukkken 
+/* ----------------------- */
 let morseBezig = false;
 function morsenizer() { //Danny
     let input1 = document.getElementById("morsenizer-input-1").value;
