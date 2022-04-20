@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/master.css">
   <link rel="stylesheet" type="text/css" href="css/navigatie.css">
-  <link rel="stylesheet" type="text/css" href="css/eenvoudige berekeningen.css">
+  <link rel="stylesheet" type="text/css" href="css/game.css">
   <script src="js/topnav.js"></script>
   <title>Math Mate</title>
 </head>
@@ -24,9 +24,8 @@
       <a href="index.html"><span class="logo__text">Math Mate</span></a>
     </section>
 
-    <nav class="mEenvbr">
+    <nav class="mGame">
       <ul class="topnav" id="myTopnav">
-
         <li class="mPres">
           <a href="presentaties.html">Presentaties</a>
         </li>
@@ -62,45 +61,11 @@
       </ul>
     </nav>
 
-    <section class="gradient-header">
-      <span>Eenvoudige Berekeningen</span>
-    </section>
-
   </header>
 
-  <main>
-    <article>
-
-      <section class="berekening">
-  			<h1>Eenvoudige berekeningen</h1>
-  			<input id="simpel-input-1" type="number" placeholder="getal 1">
-  			<input id="simpel-input-bewerking" type="text" placeholder="bewerkingssymbol">
-  			<input id="simpel-input-2" type="number" placeholder="getal 2">
-  			<button id="simpel-button">Berekenen</button>
-  			<br>
-  			<span id="simpel-output"></span>
-  		</section>
-
-  		<section class="berekening">
-  			<h1>Even of Oneven</h1>
-  			<input id="eo-input-1" type="number">
-  			<button id="eo-button">Berekenen</button>
-  			<br>
-  			<span id="eo-output"></span>
-  		</section>
-    </article>
-  </main>
-
-  <footer class="container-footer">
-    <section class="container-footer__row">
-      <span class="big-font">Math Mate</span>
-    </section>
-
-    <section class="container-footer__row">
-      <span><a href="#">Disclaimer</a></span><span><a href="#">Copyright</a></span>
-    </section>
-  </footer>
+    <canvas id="myCanvas" width="1080px" height="720px"></canvas>
+		<img id="ball" alt="ball" width="0" height="0" style="display: none;">
 
 </body>
-<script src="js/berekeningen.js"></script>
+<script src="js/block breaker.js"></script>
 </html>
