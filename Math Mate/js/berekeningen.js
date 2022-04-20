@@ -86,7 +86,7 @@ if (document.getElementById("eo-button")) {
 
 
 let OERdebug = false;
-let OERlive = true;
+let OERlive = false;
 let OERliveDelay = 1500;
 let OERbezig = false;
 async function OverEngineered() { //Danny
