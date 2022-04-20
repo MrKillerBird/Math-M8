@@ -94,7 +94,7 @@ async function OverEngineered() { //Danny
     let output = document.getElementById("OE-output");
 
     let var1 = document.getElementById("OE-var-x").value;
-    let varNaam1 = "SWD1";
+    let varNaam1 = "x";
 
     output.innerHTML = "";
 
