@@ -16,20 +16,23 @@ var ballY = canvas.height * 0.85 + ballH;
 var dx = 1.5;
 var dy = -1.5;
 
-var paddleW = 80;
+var paddleW = 100;
 var paddleH = 16;
 
 var paddleX = (canvas.width - paddleW) * 0.5;
 var paddleY = (canvas.height - paddleH) * 0.95;
 
-const el = document.querySelector('canvas');
+const el = document.querySelector('canvas'); //alleen voor scrollwheel controls
 
 var gameOver = false;
+var gameWin = false;
 var seconde = 0;
 var levens = 3;
 
+var brickCount = 0;
+
 var brickRowCount = 5;
-var brickColumnCount = 12;
+var brickColumnCount = 10;
 var brickPadding = 5;
 var brickWidth = canvas.width / brickColumnCount - brickPadding;
 var brickHeight = 20;
@@ -41,6 +44,7 @@ for (var c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
     for (var r = 0; r < brickRowCount; r++) {
         bricks[c][r] = { x: 0, y: 0, status: 1 };
+        brickCount++;
     }
 }
 
@@ -75,9 +79,10 @@ function collisionDetection() {
         for (var r = 0; r < brickRowCount; r++) {
             var b = bricks[c][r];
             if (b.status == 1) {
-                if ((ballY + ballH > b.y && ballY < b.y + brickHeight) && (ballX + ballW > b.x && ballX < b.x + brickWidth)) {
+                if (ballY + ballH > b.y && ballY < b.y + brickHeight && ballX + ballW > b.x && ballX < b.x + brickWidth) {
                     dy = -dy;
                     b.status = 0;
+                    brickCount--;
                 }
             }
         }
@@ -92,11 +97,15 @@ function collisionDetection() {
     }
 
     if (ballY + ballH > paddleY && ballX + ballW > paddleX && ballX < paddleX + paddleW) {
+        dx = -dx + (paddleX + paddleW / 2 - ballX)*0.01;
+        
         if (paddleX + paddleW / 2 - ballX > 0 && dx < 0) {
-            dx = -dx;
+            dx = -dx + (paddleX + paddleW / 2 - ballX)*0.01;
+            //dx = -dx;
         }
         if (paddleX + paddleW / 2 - ballX < 0 && dx > 0) {
-            dx = -dx;
+            dx = -dx - (paddleX + paddleW / 2 - ballX)*0.01;
+            //dx = -dx;
         }
         dy = -dy;
     }
@@ -190,6 +199,15 @@ function gameIsOver() {
     ctx.closePath();
 }
 
+function gameIsWon() {
+    ctx.beginPath();
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "gold";
+    ctx.textAlign = "center";
+    ctx.fillText("GAME WON", canvas.width / 2, canvas.height / 2);
+    ctx.closePath();
+}
+
 function draw() {
     canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px";
     canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
@@ -200,11 +218,17 @@ function draw() {
     if (levens <= 0) {
         gameOver = true;
     }
+    
+    if (brickCount <= 0) {
+        gameWin = true;
+    }
 
-    if (!gameOver) {
+    if (!gameOver && !gameWin) {
         collisionDetection();
-    } else {
+    } else if (gameOver) {
         gameIsOver();
+    } else if (gameWin) {
+        gameIsWon();
     }
     drawBricks();
     drawball();
