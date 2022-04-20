@@ -24,7 +24,7 @@
       <a href="index.html"><span class="logo__text">Math Mate</span></a>
     </section>
 
-    <nav class="#">
+    <nav class="mGame">
       <ul class="topnav" id="myTopnav">
         <li class="mPres">
           <a href="presentaties.html">Presentaties</a>
@@ -50,6 +50,10 @@
           <a href="rekenmachine.html">Rekenmachine</a>
         </li>
 
+        <li class="mGame">
+          <a href="game.html">Game</a>
+        </li>
+
         <li class="burger-icon">
         	<section><a href="#" onclick="Navigatie()">&#9776;</a></section>
         </li>
@@ -57,25 +61,11 @@
       </ul>
     </nav>
 
-    <section class="gradient-header">
-      <span>Game | Block Breaker</span>
-    </section>
-
   </header>
 
-  <main>
-  </main>
-
-  <footer class="container-footer">
-    <section class="container-footer__row">
-      <span class="big-font">Math Mate</span>
-    </section>
-
-    <section class="container-footer__row">
-      <span><a href="#">Disclaimer</a></span><span><a href="#">Copyright</a></span>
-    </section>
-  </footer>
+    <canvas id="myCanvas" width="1080px" height="720px"></canvas>
+		<img id="ball" alt="ball" width="0" height="0" style="display: none;">
 
 </body>
-<script src="js/game.js"></script>
+<script src="js/block breaker.js"></script>
 </html>

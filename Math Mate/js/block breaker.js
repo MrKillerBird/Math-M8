@@ -2,8 +2,8 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 canvas.width = 600;
-canvas.height = 700;
-canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
+canvas.height = 620;
+canvas.style.top = ((window.innerHeight + 48) - canvas.height) / 2 + "px";
 canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px";
 
 var ball = document.getElementById("ball");
@@ -192,7 +192,7 @@ function gameIsOver() {
 
 function draw() {
     canvas.style.left = (window.innerWidth - canvas.width) / 2 + "px";
-    canvas.style.top = (window.innerHeight - canvas.height) / 2 + "px";
+    canvas.style.top = ((window.innerHeight + 48) - canvas.height) / 2 + "px";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawScore();
     drawPaddle();
@@ -234,4 +234,4 @@ function secondes() {
 setInterval(secondes, 500)
 
 
-setInterval(draw, 10);	
+setInterval(draw, 10);

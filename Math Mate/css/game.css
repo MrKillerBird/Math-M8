@@ -1,21 +1,15 @@
-.gradient-header {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.gradient-header span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 24px;
-  height: calc(40vh - 48px);
-  font-size: 30pt;
+canvas {
+  background: #000;
+  display: block;
+  position: absolute;
 }
 
-@media screen and (max-width: 500px) {
-  .gradient-header span {
-    font-size: 22pt;
-  }
+body {
+  overflow: hidden;
+  background: #13BDEC;
 }
