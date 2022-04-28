@@ -151,11 +151,11 @@ async function OverEngineered() { //Danny
                 break;
             case "-":
                 if (isNaN(parseFloat(inputArray[i - 1])) && inputArray[i + 1] == "(" && inputArray[i - 1] != ")") {
-                    bewerkingen[bewerkingen.length] = "-(";;
+                    bewerkingen[bewerkingen.length] = "-(";
                     inputArray.splice(i, 2, "-(");
                 } else if (isNaN(parseFloat(inputArray[i - 1])) && inputArray[i + 1] == varNaam1 && inputArray[i - 1] != ")") {
-                    bewerkingen[bewerkingen.length] = "-(";;
-                    inputArray.splice(i, 1, "-(");
+                    bewerkingen[bewerkingen.length] = "-(";
+                    inputArray.splice(i, 1, "-");
                 } else if (isNaN(parseFloat(inputArray[i - 1])) && inputArray[i - 1] != ")") {
                     inputArray[i + 1] = "-" + inputArray[i + 1];
                     inputArray.splice(i, 1);
@@ -189,7 +189,7 @@ async function OverEngineered() { //Danny
                 inputArray[i] = ".";
                 break;
             case varNaam1:
-                if (inputArray[i - 1] == "-(") {
+                if (inputArray[i - 1] == "-") {
                     inputArray[i] = String(var1);
                     inputArray.splice(i + 1, 0, ")");
                 } else if (!isNaN(parseFloat(inputArray[i - 1]))) {
